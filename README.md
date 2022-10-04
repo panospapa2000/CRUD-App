@@ -80,6 +80,6 @@ Although not required, if you implement some unit or e2e testing, it will be a p
 
 ## **Commit your progress**
 
-Create a new branch from and push your progress there.
+Create a new branch from main and push your progress there.
 
 

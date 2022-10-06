@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { userModel } from '../Model/UserModel';
-//import { subscribeOn } from 'rxjs';
+import { UserModel } from '../Model/UserModel';
+import { subscribeOn } from 'rxjs';
 import { UserService } from '../user.service';
 
 @Component({
@@ -11,23 +11,34 @@ import { UserService } from '../user.service';
   styleUrls: ['./view.component.css']
 })
 export class ViewComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator !:MatPaginator;
+  userDetail: UserModel[] = [];
+  dataSource: MatTableDataSource<UserModel>= new MatTableDataSource();
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'phone', 'image', 'update', 'delete'];
 
-  constructor(private service: UserService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.GetUsers();
+    this.getUsers();
   }
-  @ViewChild(MatPaginator) paginator !:MatPaginator;
 
-  UserDetail: any;
-  dataSource: any;
-
-  GetUsers(){
-    this.service.GetUsers().subscribe(item=>{
-      this.UserDetail = item;
-      this.dataSource = new MatTableDataSource<userModel>(this.UserDetail);
+  getUsers(){
+    this.userService.getUsers().subscribe(item=>{
+      this.userDetail = item;
+      this.dataSource = new MatTableDataSource<UserModel>(this.userDetail);
       this.dataSource.paginator = this.paginator;
     });
   }
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'phone', 'image'];
+
+
+  updateUserFunction(id:any){
+
+  }
+
+  deleteUserFunction(id:any){
+    this.userService.deleteUser(id).subscribe(item=>{
+      this.getUsers();
+      window.alert("This user has been deleted");
+    })
+  }
 }

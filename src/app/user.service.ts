@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { UserModel } from './Model/UserModel';
 
 @Injectable({
   providedIn: 'root'
@@ -9,15 +11,11 @@ export class UserService {
   constructor(private http:HttpClient) { }
   apiurl = 'http://onelity.azurewebsites.net/users';
 
-  GetUsers(){
-    return this.http.get(this.apiurl);
+  getUsers(): Observable<UserModel[]>{
+    return this.http.get<UserModel[]>(this.apiurl);
   }
 
-  UpdateUser(inputdata: any){
-    return this.http.post(this.apiurl, inputdata);
-  }
-
-  DeleteUser(Userid: any){
-    return this.http.delete(this.apiurl + '/' + Userid);
+  deleteUser(userId: any){
+    return this.http.delete(this.apiurl + '/' + userId);
   }
 }

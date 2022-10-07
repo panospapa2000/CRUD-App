@@ -40,7 +40,9 @@ export class HeroDetailComponent implements OnInit {
     }
   }
 
-  
+  delete(hero: Hero): void {
+    this.heroService.deleteHero(hero.id).subscribe(() => this.goBack());
+  } 
   
 }
 

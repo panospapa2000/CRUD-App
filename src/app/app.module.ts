@@ -16,14 +16,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
-
 import { HeroesComponent } from './heroes/heroes.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormControl, FormGroup } from '@angular/forms';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
 import { HeroSearchComponent } from './user-search/hero-search.component';
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -47,8 +47,7 @@ import { HeroSearchComponent } from './user-search/hero-search.component';
     MatSidenavModule,
     MatToolbarModule,
     HttpClientModule,
-    
-    
+    MatListModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,

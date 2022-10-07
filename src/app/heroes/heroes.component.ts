@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
+import {Pipe, PipeTransform} from '@angular/core';
+
+
 
 @Component({
   selector: 'app-heroes',
@@ -21,7 +24,4 @@ export class HeroesComponent implements OnInit {
     this.heroService.getHeroes()
     .subscribe(heroes => this.heroes = heroes);
   }
-
-
-
 }

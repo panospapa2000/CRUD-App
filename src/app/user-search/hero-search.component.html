@@ -1,6 +1,16 @@
 <div id="search-component">
-    <label for="search-box">User Search</label>
-    <p>Search via first name</p>
+ 
+    <label for="search-box">User Search</label><br>
+    <p>Search via:</p><br>
+    <select>
+      <option>Choose an option</option>
+      <option label="First Name">First Name</option>
+      <option label="Last Name">Last Name</option>
+      <option label="Email">Email</option>
+      <option label="Phone">Phone</option>
+      <option label="Image URL">Image URL</option>
+  </select>
+    
     <input #searchBox id="search-box" (input)="search(searchBox.value)" /> <br>
 
   

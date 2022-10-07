@@ -1,26 +1,30 @@
-<div>
-  <mat-form-field>
-    <label for="new-hero">First name: </label>
-    <input id="new-hero" pattern="[A-Za-z]{2,50}" #firstname required /> <br>
-    <label for="new-hero" >Last name: </label>
-    <input id="new-hero" pattern="[A-Za-z]{2,50}" #lastname required /> <br>
-    <label for="new-hero">Email: </label>
-    <input type="email" pattern="{2,256}" id="new-hero" #email required/> <br>
-    <label for="new-hero">Phone: </label>
-    <input type="tel" id="new-hero1" pattern="[+][0-9]{3}[ ][0-9]{3}[ ][0-9]{3}[ ][0-9]{3}" #phone required />
+<div class="form-group col-md-6">
+
+   
+    <label for="new-user">First name: </label>
+    <input id="firstname" ngModel name="firstname1" #firstname1="ngModel" pattern="[A-Za-z]{2,50}" #firstname required /> <br><br>
+    <label for="new-user" >Last name: </label>
+    <input id="lastname" ngModel name="lastname1" #lastname1="ngModel" pattern="[A-Za-z]{2,50}" #lastname required /> <br><br>
+    <label for="user-email">Email: </label>
+    <input type="text" ngModel name="email1" #email1="ngModel" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{1,}([.][a-zA-Z]{1,}|[.][\w-]{1,}[.][a-zA-Z]{1,})$" id="new-user" #email required/> <br><br>
+    <label for="user-phone">Phone: </label>
+    <input type="tel" id="tel" ngModel name="tel" #tel="ngModel"  pattern="[+][0-9 ]+" #phone required />
     <p>Format +123 456 789 012</p>
-    <label for="new-hero">Image url: </label>
-    <input type="url" id="new-hero" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif)" #image required/> <br>
-
-  </mat-form-field>
-
-         
-      
-        
+    <label for="new-user">Image url: </label>
+    <input type="url" ngModel name="url" id="new-user" #url="ngModel" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif)" #image required/> <br>
+  <br>
+    
+    <button type="button" [disabled]="url.invalid || tel.invalid || lastname1.invalid || firstname1.invalid || email1.invalid"  class="add-button" name="button1" (click)="add(firstname.value,lastname.value,email.value,phone.value,image.value); 
+    firstname.value=''; lastname.value=''; email.value=''; phone.value=''; image.value=''">
+      Add User
+    </button> 
+    
 
   </div>   
+  <div class="form-group col-md-6">
+
+  </div>
+  
+  
   <!-- (click) passes input value to add() and then clears the input -->
-  <button  type="button" class="add-button" name="button1" (click)="add(firstname.value,lastname.value,email.value,phone.value,image.value); 
-  firstname.value=''; lastname.value=''; email.value=''; phone.value=''; image.value=''">
-    Add User
-  </button>
+  

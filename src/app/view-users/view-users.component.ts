@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
+
 
 @Component({
   selector: 'app-view-users',
@@ -9,7 +11,6 @@ import { HeroService } from '../hero.service';
 })
 export class ViewUsersComponent implements OnInit {
   heroes: Hero[] = [];
-
   
   
 constructor(private heroService: HeroService) { }

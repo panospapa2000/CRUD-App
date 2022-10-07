@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ViewComponent,
     CreateComponent,
     UpdateComponent,
-    DeleteComponent
+    DeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +32,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatTableModule,
     MatPaginatorModule,
     HttpClientModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

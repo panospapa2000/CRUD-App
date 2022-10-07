@@ -10,5 +10,15 @@ h1 {
 
 th {
   color:rgb(2, 2, 6);
-  background-color: rgb(205, 20, 20);
+  background-color: rgb(255, 0, 0);
+}
+
+img {
+  border-radius: 100%;
+  border-color: black;
+  border-style: double;
+}
+
+th.mat-sort-header-sorting {
+  color: rgb(0, 55, 255);
 }

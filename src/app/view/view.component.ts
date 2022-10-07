@@ -42,6 +42,11 @@ export class ViewComponent implements OnInit{
     }
 }
 
+  filterBar(event: Event){
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue;
+  }
+
   updateUserFunction(id:number){
 
   }

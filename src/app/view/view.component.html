@@ -1,6 +1,10 @@
 
 <!--Angular Material Table-->
 <div style="width:1500px" class="mat-elevation-z8">
+    <mat-form-field>
+        <mat-label>Click here to search</mat-label>
+        <input matInput placeholder="Search" (keyup)="filterBar($event)">
+    </mat-form-field>
     <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
 
         <!-- User ID Column -->

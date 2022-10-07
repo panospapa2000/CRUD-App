@@ -1,0 +1,14 @@
+<div id="search-component">
+    <label for="search-box">User Search</label>
+    <p>Search via first name</p>
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" /> <br>
+
+  
+    <ul class="search-result">
+      <li *ngFor="let hero of heroes$ | async" >
+        <a routerLink="/detail/{{hero.id}}">
+          {{hero.firstName}} {{hero.lastName}}
+        </a>
+      </li>
+    </ul>
+  </div>

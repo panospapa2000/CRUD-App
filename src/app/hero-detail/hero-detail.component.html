@@ -1,0 +1,21 @@
+<div *ngIf="hero">
+    <h2>{{hero.firstName | uppercase}} Details</h2>
+    <div><span>id: </span>{{hero.id}}</div>
+    <div>
+      <label for="hero-name">First name: </label>
+      <input id="hero-name" [(ngModel)]="hero.firstName" placeholder="First name"/><br>
+      <label for="hero-lastName">Last name: </label>
+      <input id="hero-lastName" [(ngModel)]="hero.lastName" placeholder="Last name"/><br>
+      <label for="hero-email">Email: </label>
+      <input id="hero-email" [(ngModel)]="hero.email" placeholder="Email"/><br>
+      <label for="hero-lastName">Phone number: </label> 
+      <input id="hero-email" [(ngModel)]="hero.phone" placeholder="Email"/><br>
+      <label for="hero-image">Image: </label><br><img src="{{hero.image}}"/> <br>
+      <label for="hero-image">Input new Image link: </label>
+      <input id="hero-image" [(ngModel)]="hero.image" placeholder="Image Url"/><br>
+      
+    </div>
+    <button type="button" (click)="goBack()">go back</button>
+    <button type="button" (click)="save()">save</button>
+
+  </div>

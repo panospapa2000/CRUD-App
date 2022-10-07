@@ -1,0 +1,26 @@
+<div>
+  <mat-form-field>
+    <label for="new-hero">First name: </label>
+    <input id="new-hero" pattern="[A-Za-z]{2,50}" #firstname required /> <br>
+    <label for="new-hero" >Last name: </label>
+    <input id="new-hero" pattern="[A-Za-z]{2,50}" #lastname required /> <br>
+    <label for="new-hero">Email: </label>
+    <input type="email" pattern="{2,256}" id="new-hero" #email required/> <br>
+    <label for="new-hero">Phone: </label>
+    <input type="tel" id="new-hero1" pattern="[+][0-9]{3}[ ][0-9]{3}[ ][0-9]{3}[ ][0-9]{3}" #phone required />
+    <p>Format +123 456 789 012</p>
+    <label for="new-hero">Image url: </label>
+    <input type="url" id="new-hero" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif)" #image required/> <br>
+
+  </mat-form-field>
+
+         
+      
+        
+
+  </div>   
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button  type="button" class="add-button" name="button1" (click)="add(firstname.value,lastname.value,email.value,phone.value,image.value); 
+  firstname.value=''; lastname.value=''; email.value=''; phone.value=''; image.value=''">
+    Add User
+  </button>

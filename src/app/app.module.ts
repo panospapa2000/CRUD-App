@@ -11,31 +11,39 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDivider, MatDividerModule} from '@angular/material/divider';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { ViewUsersComponent } from './view-users/view-users.component';
+import { AddUsersComponent } from './add-users/add-users.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
-import { HeroesComponent } from './heroes/heroes.component';
+import { InMemoryDataService } from './shared/in-memory-data.service';
+import { ViewUsersComponent } from './view-users/view-users.component';
 import { FormsModule, FormControl, FormGroup } from '@angular/forms';
-import { MessagesComponent } from './messages/messages.component';
+import { MessagesComponent } from './shared/messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { UserDetailComponent } from './view-users/user-detail/user-detail.component';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
-import { HeroSearchComponent } from './user-search/hero-search.component';
+import { UserSearchComponent } from './user-search/user-search.component';
 import {MatListModule} from '@angular/material/list';
+import { CoreComponent } from './core/core.component';
+import { SharedComponent } from './shared/shared.component';
+import { NotFoundComponent } from './core/not-found/not-found.component';
+import { ModelsComponent } from './core/models/models.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    AddUsersComponent,
     ViewUsersComponent,
-    HeroesComponent,
     MessagesComponent,
     DashboardComponent,
-    HeroDetailComponent,
+    UserDetailComponent,
     DeleteUserComponent,
-    HeroSearchComponent
+    UserSearchComponent,
+    CoreComponent,
+    SharedComponent,
+    NotFoundComponent,
+    ModelsComponent
   ],
   imports: [
     BrowserModule,
@@ -52,9 +60,7 @@ import {MatListModule} from '@angular/material/list';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: 'users', component: ViewUsersComponent },
-    ])
+    RouterModule.forRoot([    ])
   ],
   providers: [],
   bootstrap: [AppComponent]

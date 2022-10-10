@@ -2,17 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
+import { User } from '../../shared/user';
+import { HeroService } from '../../shared/hero.service';
 
 @Component({
-  selector: 'app-hero-detail',
-  templateUrl: './hero-detail.component.html',
-  styleUrls: [ './hero-detail.component.css' ]
+  selector: 'app-user-detail',
+  templateUrl: './user-detail.component.html',
+  styleUrls: [ './user-detail.component.css' ]
 })
-export class HeroDetailComponent implements OnInit {
+export class UserDetailComponent implements OnInit {
   
-  hero: Hero | undefined;
+  user: User | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,20 +27,20 @@ export class HeroDetailComponent implements OnInit {
   getHero(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.heroService.getHero(id)
-      .subscribe(hero => this.hero = hero);
+      .subscribe(user => this.user = user);
   }
 
   goBack(): void {
     this.location.back();
   }
   save(): void {
-    if (this.hero) {
-      this.heroService.updateHero(this.hero)
+    if (this.user) {
+      this.heroService.updateHero(this.user)
         .subscribe(() => this.goBack());
     }
   }
 
-  delete(hero: Hero): void {
+  delete(hero: User): void {
     this.heroService.deleteHero(hero.id).subscribe(() => this.goBack());
   } 
   

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
+import { User } from '../shared/user';
+import { HeroService } from '../shared/hero.service';
 
 @Component({
   selector: 'app-delete-user',
@@ -8,7 +8,7 @@ import { HeroService } from '../hero.service';
   styleUrls: ['./delete-user.component.css']
 })
 export class DeleteUserComponent implements OnInit {
-  heroes: Hero[] = [];
+  users: User[] = [];
 
   constructor(private heroService: HeroService) { }
 
@@ -18,13 +18,13 @@ export class DeleteUserComponent implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes()
-    .subscribe(heroes => this.heroes = heroes);
+    .subscribe(users => this.users = users);
   }
 
 
-  delete(hero: Hero): void {
-    this.heroes = this.heroes.filter(h => h !== hero);
-    this.heroService.deleteHero(hero.id).subscribe();
+  delete(user: User): void {
+    this.users = this.users.filter(h => h !== user);
+    this.heroService.deleteHero(user.id).subscribe();
   } 
 
 }

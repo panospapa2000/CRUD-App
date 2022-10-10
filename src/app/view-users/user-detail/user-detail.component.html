@@ -1,0 +1,24 @@
+<div *ngIf="user">
+    <h2>{{user.firstName | uppercase}} Details</h2>
+    <label for="user-firstname">ID: </label>{{user.id}}
+    <div>
+      <label for="hero-firstname">First name: </label>
+      <input id="hero-firstname" ngModel name="firstname1" #firstname1="ngModel" [(ngModel)]="user.firstName" pattern="[A-Za-z]{2,50}" placeholder="First name" required/><br>
+      <label for="hero-lastName">Last name: </label>
+      <input id="hero-lastName" ngModel name="lastname1" #lastname1="ngModel" [(ngModel)]="user.lastName" pattern="[A-Za-z]{2,50}" placeholder="Last name" required /><br>
+      <label for="hero-email">Email: </label>
+      <input id="hero-email" type="email" ngModel name="email1" #email1="ngModel" [(ngModel)]="user.email" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{1,}([.][a-zA-Z]{1,}|[.][\w-]{1,}[.][a-zA-Z]{1,})$" placeholder="Email" required/><br>
+      <label for="hero-lastName">Phone number: </label> 
+      <input type="tel" id="hero-phone" ngModel name="tel1" #tel1="ngModel"  [(ngModel)]="user.phone" pattern="[+][0-9 ]+" placeholder="+123 456 789 012" required/><br>
+      <label for="hero-image">Image: </label><br><img src="{{user.image}}"/> <br>
+      <label for="hero-image">Input new Image link: </label>
+      <input type="url" id="hero-image" ngModel name="url1" #url1="ngModel" [(ngModel)]="user.image" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif)" required placeholder="Image Url"/><br>
+      
+    </div>
+    <button type="button" (click)="goBack()">go back</button>     
+    <button type="button" [disabled]="firstname1.invalid || lastname1.invalid || email1.invalid || tel1.invalid || url1.invalid" (click)="save()">save</button>
+    
+   <button type="button" class="delete" title="delete hero" (click)="delete(user)">delete</button>
+    
+
+  </div>

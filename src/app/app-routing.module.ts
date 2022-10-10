@@ -1,19 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HeroesComponent } from './heroes/heroes.component';
+import { ViewUsersComponent } from './view-users/view-users.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { UserDetailComponent } from './view-users/user-detail/user-detail.component';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
-
+import { AddUsersComponent } from './add-users/add-users.component';
+import { UserSearchComponent } from './user-search/user-search.component';
+import { NotFoundComponent } from './core/not-found/not-found.component';
 
 
 
 const routes: Routes = [
-  { path: 'heroes', component: HeroesComponent }, 
+  { path: 'users', component: ViewUsersComponent }, 
 { path: 'dashboard', component: DashboardComponent },
 { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-{path: 'detail/:id', component: HeroDetailComponent},
+{path: 'users/detail/:id', component: UserDetailComponent},
 { path: 'delete', component: DeleteUserComponent },
+{ path: 'addusers', component: AddUsersComponent },
+{ path: 'search', component: UserSearchComponent },
+{ path:'**', pathMatch: 'full',  component: NotFoundComponent },
 ];
 
 @NgModule({

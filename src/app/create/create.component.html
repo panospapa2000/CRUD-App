@@ -1,1 +1,21 @@
-<p>create works!</p>
+<div class="creationForm">
+    <mat-form-field hintLabel="Max 15 characters" appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput #inputFirst maxlength="15">
+        <mat-hint align="end">{{inputFirst.value?.length || 0}}/15</mat-hint>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max 15 characters" appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput #inputLast maxlength="15">
+        <mat-hint align="end">{{inputLast.value?.length || 0}}/15</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="someone@example.com" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field hintLabel="+CountryCode Number" appearance="fill">
+        <mat-label>Phone number</mat-label>
+        <input matInput placeholder="e.g. +30 6991520547">
+    </mat-form-field>
+</div>

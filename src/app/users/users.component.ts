@@ -4,8 +4,9 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort,Sort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {User} from '../user';
+import { MatButtonModule } from '@angular/material/button';
 import { UserService } from '../user.service';
-import { MatFormFieldModule } from '@angular/material/form-field';
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -13,11 +14,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 })
 export class UsersComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'phone', 'image'];
-  userData: User[]=[];
-  dataSource: MatTableDataSource<User>= new MatTableDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'phone', 'image','update','delete'];
+  userData: User[]=[];
+  dataSource: MatTableDataSource<User>= new MatTableDataSource();
+
 
   constructor(private userService: UserService) { }
 
@@ -37,6 +39,13 @@ export class UsersComponent implements OnInit {
   applyFilter(event:Event){
     const filterValue= (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue;
+  }
+
+
+  deleteUser(user:User):void {
+    this.userData = this.userData.filter(u=> u !==user);
+    this.userService.deleteUser(user.id).subscribe(item=>{this.getUsers});
+
   }
 
 }

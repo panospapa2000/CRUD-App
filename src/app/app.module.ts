@@ -13,14 +13,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { HttpClientModule } from '@angular/common/http';
+import {MatInputModule} from '@angular/material/input';
 
 import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
+import { CreateComponent } from './users/create/create.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UsersComponent
+    UsersComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
+    MatInputModule,
     MatSortModule,
     HttpClientModule,
     RouterModule,

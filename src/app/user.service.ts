@@ -12,11 +12,19 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
   url='http://onelity.azurewebsites.net/users';
 
 
   getUsers():Observable<User[]> {
     return this.http.get<User[]>(this.url);
+  }
+
+  deleteUser(id:number):Observable<User>{
+    const userUrl= `${this.url}/${id}`;
+    return this.http.delete<User>(userUrl,this.httpOptions);
   }
 
 }

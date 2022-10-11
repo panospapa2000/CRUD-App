@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { User } from '../shared/user';
+import { User } from '../core/models/user';
 import { HeroService } from '../shared/hero.service';
 import {Pipe, PipeTransform} from '@angular/core';
 
@@ -13,15 +13,37 @@ import {Pipe, PipeTransform} from '@angular/core';
 })
 export class ViewUsersComponent implements OnInit {
   users: User[] = [];
+  selectedoption: string = 'id'
+  ascordesc: string = 'asc'
+  currentusers: User[] = [];
+
+  sortoption (event: any) {
+    //update the ui
+    this.selectedoption = event.target.value;
+    this.getusers();
+  }
+
+  sortdirection (event: any) {
+    this.ascordesc = event.target.value;
+    this.getusers();
+    
+  }
 
   constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {
-    this.getHeroes();
+    this.getusers();
+    this.currentusers=this.users;
   }
 
-  getHeroes(): void {
-    this.heroService.getHeroes()
+  getusers(): void {
+    this.heroService.getUsers(this.selectedoption, this.ascordesc)
     .subscribe(users => this.users = users);
+    
   }
+  onPageChange($event: { pageIndex: number; pageSize: number; }) {
+    this.currentusers =  this.users.slice($event.pageIndex*$event.pageSize, $event.pageIndex*$event.pageSize + $event.pageSize);
+  }
+  
 }
+

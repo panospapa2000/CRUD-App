@@ -1,4 +1,7 @@
+
+
 <mat-drawer-container class="example-container">
+    
     <mat-drawer mode="side" opened>
         <div class="btn-group">
             <button mat-button routerLink="dashboard">Dashboard</button>
@@ -10,9 +13,12 @@
         
     </mat-drawer>
     <mat-drawer-content>
+        
         <router-outlet></router-outlet>
         <app-messages></app-messages>
         
     </mat-drawer-content>
+
+    
     
 </mat-drawer-container>

@@ -1,17 +1,22 @@
+<div class="container-fluid">
+  <mat-toolbar color="primary">
+    Title
+  </mat-toolbar>
+
 <div id="search-component">
  
     <label for="search-box">User Search</label><br>
-    <p>Search via:</p><br>
-    <select id="searchoption" ngModel name="option1" #option>
-      <option>Choose an option</option>
-      <option value="First Name">First Name</option>
-      <option value="Last Name">Last Name</option>
-      <option value="Email">Email</option>
-      <option value="Phone">Phone</option>
-      <option value="Image URL">Image URL</option>
+    <p>Search via:</p>
+    <select (change)="searchoption($event)">
+      <option value="id">ID</option>
+      <option value="firstName">First Name</option>
+      <option value="lastName">Last Name</option>
+      <option value="email">Email</option>
+      <option value="phone">Phone</option>
+      <option value="image">Image URL</option>
   </select>
-    
-
+     <br>
+ 
     <input #searchBox id="search-box" (input)="search(searchBox.value)" /> <br>
 
   

@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { User } from './user';
+import { User } from '../core/models/user';
 import { MessageService } from './message.service';
 
 
@@ -29,8 +29,18 @@ export class HeroService {
         catchError(this.handleError<User[]>('getHeroes', []))
       );
   }
+    /** GET heroes from the server */
+    getUsers(selectedoption: string, ascordesc:string): Observable<User[]> {
+      const url = `${this.usersUrl}/?_sort=${selectedoption}&_order=${ascordesc}`;
+      return this.http.get<User[]>(url)
+        .pipe(
+          tap(_ => this.log('fetched users')),
+          catchError(this.handleError<User[]>('getHeroes', []))
+        );
+    }
 
-  /** GET hero by id. Return `undefined` when id not found */
+
+  /** GET hero by id.  Return `undefined` when id not found */
   getHeroNo404<Data>(id: number): Observable<User> {
     const url = `${this.usersUrl}/?id=${id}`;
     return this.http.get<User[]>(url)
@@ -68,16 +78,16 @@ export class HeroService {
   }
 
   /* GET heroes whose last name contains search term */
-  searchHeroesls(term: string, searchtype: string): Observable<User[]> {
+  searchUsers(term: string, searchtype: any): Observable<User[]> {
     if (!term.trim()) {
       // if not search term, return empty hero array.
       return of([]);
     }
-    return this.http.get<User[]>(`${this.usersUrl}/?lastName=${term}`).pipe(
+    return this.http.get<User[]>(`${this.usersUrl}/?${searchtype}=${term}`).pipe(
       tap(x => x.length ?
          this.log(`found users matching "${term}"`) :
          this.log(`no users matching "${term}"`)),
-      catchError(this.handleError<User[]>('searchHeroes', []))
+      catchError(this.handleError<User[]>('searchUsers', []))
     );
   }
 

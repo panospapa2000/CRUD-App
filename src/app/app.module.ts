@@ -28,6 +28,9 @@ import { CoreComponent } from './core/core.component';
 import { SharedComponent } from './shared/shared.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import { ModelsComponent } from './core/models/models.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 
 @NgModule({
@@ -60,6 +63,8 @@ import { ModelsComponent } from './core/models/models.component';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
+    MatMenuModule,
+    MatPaginatorModule,
     RouterModule.forRoot([    ])
   ],
   providers: [],

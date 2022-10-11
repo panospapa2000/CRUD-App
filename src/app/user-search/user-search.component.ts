@@ -6,9 +6,9 @@ import {
    debounceTime, distinctUntilChanged, switchMap
  } from 'rxjs/operators';
 
-import { User } from '../shared/user';
+import { User } from '../core/models/user';
 import { HeroService } from '../shared/hero.service';
-
+ 
 @Component({
   selector: 'app-user-search',
   templateUrl: './user-search.component.html',
@@ -17,6 +17,12 @@ import { HeroService } from '../shared/hero.service';
 export class UserSearchComponent implements OnInit {
   users$!: Observable<User[]>;
   private searchTerms = new Subject<string>();
+  searchtype: any ='id'
+
+  searchoption (event: any) {
+    //update the ui
+    this.searchtype = event.target.value;
+  }
 
   constructor(private heroService: HeroService) {}
 
@@ -35,7 +41,7 @@ export class UserSearchComponent implements OnInit {
       distinctUntilChanged(),
 
       // switch to new search observable each time the term changes
-      switchMap((term: string) => this.heroService.searchHeroes(term)),
+      switchMap((term: string) => this.heroService.searchUsers(term, this.searchtype)),
     );
   }
 }

@@ -1,8 +1,37 @@
+  <div class="container-fluid">
+    <mat-toolbar color="primary">
+      Title
+    </mat-toolbar>
+
+    <mat-paginator 
+    [length]=users.length
+    [pageSize]=users.length
+    [pageSizeOptions]="[users.length,5, 10, 25, 100]"
+    (page)="onPageChange($event)">
+    </mat-paginator>
+
+    
+    
+    <select (change)="sortoption($event)">
+      <option value="id">ID</option>
+      <option value="firstName">First Name</option>
+      <option value="lastName">Last Name</option>
+      <option value="email">Email</option>
+      <option value="phone">Phone</option>
+      <option value="image">Image URL</option>
+  </select>
+
+  <select (change)="sortdirection($event)">
+    <option value="asc">Ascending</option>
+    <option value="desc">Descending</option>
+</select>
+ 
+<br>
+
 <ul class="users">
-  <li *ngFor="let user of users">
+  <li *ngFor="let user of currentusers onPageChange($event)">
     <a routerLink="./detail/{{user.id}}">
     <span class="badge">{{user.id}}</span> {{user.firstName}} {{user.lastName}}
-    
     </a>
   </li>
 </ul><!---->

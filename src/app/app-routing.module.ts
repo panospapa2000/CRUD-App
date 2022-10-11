@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { CreateComponent } from './create/create.component';
 import { HomeComponent } from './home/home.component';
 import { UpdateComponent } from './update/update.component';
-import { DeleteComponent } from './delete/delete.component';
 import { ViewComponent } from './view/view.component';
 
 const routes: Routes = [
@@ -13,7 +12,6 @@ const routes: Routes = [
     path: "view", component: ViewComponent,
     children: [
       {path:"update/:id", component: UpdateComponent},
-      {path:"delete", component: DeleteComponent}
     ]
   }
 ];

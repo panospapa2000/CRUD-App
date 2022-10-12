@@ -3,7 +3,7 @@
     <form [formGroup]='form'>
         <mat-form-field appearance="fill">
             <mat-label>User ID</mat-label>
-            <input matInput #inputImage formControlName="userID">
+            <input matInput #inputImage formControlName="id">
         </mat-form-field>
 
         <mat-form-field hintLabel="Max 15 characters" appearance="fill">
@@ -20,20 +20,20 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Enter your email</mat-label>
-            <input matInput #inputImage formControlName="userEmail">
+            <input matInput #inputImage formControlName="email">
             <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
         </mat-form-field>
-        
+
         <mat-form-field hintLabel="+CountryCode Number" appearance="fill">
             <mat-label>Phone number</mat-label>
             <input matInput #inputPhone placeholder="e.g. +30 6991520547" formControlName="phone">
         </mat-form-field>
 
-        <mat-form-field hintLabel="Enter URL of image" appearance="fill" >
+        <mat-form-field hintLabel="Enter URL of image" appearance="fill">
             <mat-label>Image URL</mat-label>
             <input matInput #inputImage formControlName="image">
         </mat-form-field>
+        <button mat-raised-button (click)="applyUpdates()" color="primary">Apply</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button mat-raised-button mat-dialog-close color="warn">Close</button>
     </form>
 </div>
-<br>
-<button mat-raised-button color="primary" (click)="applyUpdates()">Apply for updated changes</button>

@@ -12,23 +12,24 @@ import { UserService } from '../user.service';
 
 export class UpdateComponent implements OnInit {
 
-  editData: any;
+  public editData: any;
+  public saveData: any;
 
   form: FormGroup = new FormGroup({
-    userID: new FormControl({ value: "", disabled: true }),
+    id: new FormControl({ value: '', disabled: true }),
     firstName: new FormControl(''),
     lastName: new FormControl(''),
-    userEmail: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('', [Validators.required, Validators.email]),
     phone: new FormControl(''),
     image: new FormControl(''),
   })
 
   initializeForm(data: UserModel) {
     this.form.setValue({
-      userID: data.id,
+      id: data.id,
       firstName: data.firstName,
       lastName: data.lastName,
-      userEmail: data.email,
+      email: data.email,
       phone: data.phone,
       image: data.image,
     })
@@ -36,35 +37,35 @@ export class UpdateComponent implements OnInit {
 
   email = new FormControl('', [Validators.required, Validators.email]);
 
-
   constructor(private userService: UserService, @Inject(MAT_DIALOG_DATA) public data: UserModel, private dialogRef: MatDialogRef<UpdateComponent>) {
     this.initializeForm(data);
+    this.changeForm(data.id);
   }
 
   ngOnInit(): void {
   }
 
-  getData() {
-    this.userService.getUsers().subscribe(item => {
+  changeForm(id: number) {
+    this.userService.getUsersbyId(id).subscribe(item => {
       this.editData = item;
-      if (this.editData != null) {
-        this.form.setValue(
-          {
-            firstName: this.editData.firstName,
-            lastName: this.editData.lastName,
-            userEmail: this.editData.email,
-            phone: this.editData.phone,
-            image: this.editData.image
-          })
-      }
+      this.form.setValue({
+        id: this.editData.id,
+        firstName: this.editData.firstName,
+        lastName: this.editData.lastName,
+        email: this.editData.email,
+        phone: this.editData.phone,
+        image: this.editData.image
+      })
     })
   }
 
   applyUpdates() {
-      this.userService.updateUser(this.form.value()).subscribe(item=>{
-        this.editData = item;
-        this.dialogRef.close(this.editData);
+    if (this.form.valid) {
+      this.userService.updateUser(this.form.getRawValue(), this.data.id).subscribe(item => {
+        this.saveData = item;
+        if (confirm("Are you sure you want to update this user?")){this.dialogRef.close();}
       })
+    }
   }
 
   getEmailErrorMessage() {

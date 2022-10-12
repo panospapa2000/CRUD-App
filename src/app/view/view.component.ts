@@ -52,7 +52,7 @@ export class ViewComponent implements OnInit {
   updateUserFunction(element: UserModel) {
     this.dialog.open(UpdateComponent, {
       width: '250px', height: '600px', enterAnimationDuration: '1000ms', exitAnimationDuration: '1000ms', data: element
-    }).afterClosed().subscribe(data=>console.log(data))
+    }).afterClosed().subscribe(item=> {this.getUsers();})
   }
 
   deleteUserFunction(id: number) {

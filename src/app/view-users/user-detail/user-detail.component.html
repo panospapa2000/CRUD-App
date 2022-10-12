@@ -17,9 +17,21 @@
       <input type="tel" id="hero-phone" ngModel name="tel1" #tel1="ngModel"  [(ngModel)]="user.phone" pattern="[+][0-9 ]+" placeholder="+123 456 789 012" required/><br>
       <label for="hero-image">Image: </label><br><img src="{{user.image}}"/> <br>
       <label for="hero-image">Input new Image link: </label>
-      <input type="url" id="hero-image" ngModel name="url1" #url1="ngModel" [(ngModel)]="user.image" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif)" required placeholder="Image Url"/><br>
-      
+      <input type="text" id="hero-image" ngModel name="url1" #url1="ngModel" [(ngModel)]="user.image" pattern="(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif))|(^data:image.*)" required placeholder="Image Url"/><br>
+        
     </div>
+    <br>
+    <label>Upload an image to convert to base64 format for usage above:</label><br>
+    <input type="file" id="img" name="img" accept="image/*" (change)="onChange($event)" />
+ 
+    <div *ngIf="myimage">
+      <p>Image Preview:</p>
+      <img [src]="myimage" width="200px" height="100px" alt="" />
+      <input type="text" id="basecode" [(ngModel)]="base64code">
+      <button (click)="copyText(base64code)">Click to copy text</button>
+
+    </div> 
+    <br>
     <button type="button" (click)="goBack()">go back</button>     
     <button type="button" [disabled]="firstname1.invalid || lastname1.invalid || email1.invalid || tel1.invalid || url1.invalid" (click)="save()">save</button>
     

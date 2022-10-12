@@ -6,7 +6,7 @@
 
 <div class="form-group col-md-6">
 
-   
+    
     <label for="new-user">First name: </label>
     <input id="firstname" ngModel name="firstname1" #firstname1="ngModel" pattern="[A-Za-z]{2,50}" #firstname required /> <br><br>
     <label for="new-user" >Last name: </label>
@@ -16,8 +16,19 @@
     <label for="user-phone">Phone: </label>
     <input type="tel" id="tel" ngModel name="tel" #tel="ngModel"  pattern="[+][0-9 ]+" #phone required />
     <p>Format +123 456 789 012</p>
-    <label for="new-user">Image url: </label>
-    <input type="url" ngModel name="url" id="new-user" #url="ngModel" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif)" #image required/> <br>
+    <label for="new-user">Image url/base64: </label>
+    <input type="url" ngModel name="url" id="new-user" #url="ngModel" pattern="(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif))|(^data:image.*)" #image required/> <br>
+  <br>
+  <label>Upload an image to convert it to base64 format for usage above:</label><br>
+  <input type="file" id="img" name="img" accept="image/*" (change)="onChange($event)" />
+  <br>
+  <div *ngIf="myimage">
+    <p>Image Preview:</p>
+    <img [src]="myimage" width="200px" height="100px" alt="" />
+    <input type="text" id="basecode" [(ngModel)]="base64code">
+    <button (click)="copyText(base64code)">Click to copy text</button>
+
+  </div> 
   <br>
     
     <button type="button" [disabled]="url.invalid || tel.invalid || lastname1.invalid || firstname1.invalid || email1.invalid"  class="add-button" name="button1" (click)="add(firstname.value,lastname.value,email.value,phone.value,image.value); 

@@ -30,8 +30,8 @@ export class HeroService {
       );
   }
     /** GET heroes from the server */
-    getUsers(selectedoption: string, ascordesc:string): Observable<User[]> {
-      const url = `${this.usersUrl}/?_sort=${selectedoption}&_order=${ascordesc}`;
+    getUsers(selectedoption: string, ascordesc:string, page: number, limit: number): Observable<User[]> {
+      const url = `${this.usersUrl}/?_sort=${selectedoption}&_order=${ascordesc}&_page=${page}&_limit=${limit}`;
       return this.http.get<User[]>(url)
         .pipe(
           tap(_ => this.log('fetched users')),

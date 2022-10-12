@@ -4,9 +4,9 @@
     </mat-toolbar>
 
     <mat-paginator 
-    [length]=users.length
-    [pageSize]=users.length
-    [pageSizeOptions]="[users.length,5, 10, 25, 100]"
+    [length]=usersorg.length
+    [pageSize]= 5
+    [pageSizeOptions]="[5, 10, 25, 100]"
     (page)="onPageChange($event)">
     </mat-paginator>
 
@@ -29,9 +29,9 @@
 <br>
 
 <ul class="users">
-  <li *ngFor="let user of currentusers onPageChange($event)">
+  <li *ngFor="let user of users">
     <a routerLink="./detail/{{user.id}}">
     <span class="badge">{{user.id}}</span> {{user.firstName}} {{user.lastName}}
     </a>
   </li>
-</ul><!---->
+</ul><!----> 

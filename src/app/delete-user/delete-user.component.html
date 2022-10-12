@@ -3,6 +3,29 @@
     Title
   </mat-toolbar>
 
+  <mat-paginator 
+    [length]=usersorg.length
+    [pageSize]= 5
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    (page)="onPageChange($event)">
+    </mat-paginator>
+    
+    <select (change)="sortoption($event)">
+      <option value="id">ID</option>
+      <option value="firstName">First Name</option>
+      <option value="lastName">Last Name</option>
+      <option value="email">Email</option>
+      <option value="phone">Phone</option>
+      <option value="image">Image URL</option>
+     </select>
+
+  <select (change)="sortdirection($event)">
+    <option value="asc">Ascending</option>
+    <option value="desc">Descending</option>
+  </select>
+ 
+<br>
+
 <ul class="heroes">
     <li *ngFor="let user of users">
       <a routerLink="/detail/{{user.id}}">

@@ -16,13 +16,13 @@ export class UserService {
     return this.http.get<UserModel[]>(this.apiurl);
   }
 
-  getUsersbyId(UserID: number){
-    return this.http.get(this.apiurl + '/' + UserID);
+  getUsersbyId(userId: number){
+    return this.http.get(this.apiurl + '/' + userId);
   }
 
-  //createUser(): Observable<UserModel[]>{
-    //return this.http.post<UserModel[]>(this.apiurl);
-  //}
+  createUser(inputdata: any){
+    return this.http.post(this.apiurl, inputdata);
+  }
 
   updateUser(inputdata: UserModel, UserID: number){
     return this.http.put(this.apiurl + '/' + UserID, inputdata);
@@ -31,8 +31,4 @@ export class UserService {
   deleteUser(userId: number){
     return this.http.delete(this.apiurl + '/' + userId);
   }
-
-  // getUserByID(userId: number){
-  //   return this.http.get(this.apiurl + '/' + userId);
-  // }
 }

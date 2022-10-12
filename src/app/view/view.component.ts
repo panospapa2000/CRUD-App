@@ -58,8 +58,8 @@ export class ViewComponent implements OnInit {
   deleteUserFunction(id: number) {
     if (confirm("Are you sure you want to delete this user with ID " + id + "?")) {
       this.userService.deleteUser(id).subscribe(item => {
-        console.log(this.dataSource.data);
         window.alert("This user has been deleted");
+        this.getUsers();
       })
     }
   }

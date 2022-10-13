@@ -11,22 +11,38 @@
             <input matInput #inputFirst maxlength="15" formControlName="firstName">
             <mat-hint align="end">{{inputFirst.value?.length || 0}}/15</mat-hint>
         </mat-form-field>
+        <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)">
+            <mat-error *ngIf="firstName?.errors?.['required']">First name is required</mat-error>
+            <mat-error *ngIf="firstName?.errors?.['pattern']">Insert characters only</mat-error>
+        </div>
 
         <mat-form-field hintLabel="Max 15 characters" appearance="fill">
             <mat-label>Last Name</mat-label>
             <input matInput #inputLast maxlength="15" formControlName="lastName">
             <mat-hint align="end">{{inputLast.value?.length || 0}}/15</mat-hint>
         </mat-form-field>
+        <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)">
+            <mat-error *ngIf="lastName?.errors?.['required']">Last name is required</mat-error>
+            <mat-error *ngIf="lastName?.errors?.['pattern']">Insert characters only</mat-error>
+        </div>
 
         <mat-form-field appearance="fill">
-            <mat-label>Enter your email</mat-label>
+            <mat-label>Εmail</mat-label>
             <input matInput formControlName="email">
         </mat-form-field>
+        <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+            <mat-error *ngIf="email?.errors?.['required']">Email is required</mat-error>
+            <mat-error *ngIf="email?.errors?.['pattern']">Not a valid email</mat-error>
+        </div>
 
         <mat-form-field hintLabel="+CountryCode Number" appearance="fill">
             <mat-label>Phone number</mat-label>
             <input matInput placeholder="e.g. +306991520547" formControlName="phone">
         </mat-form-field>
+        <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
+            <mat-error *ngIf="phone?.errors?.['required']">Phone is required</mat-error>
+            <mat-error *ngIf="phone?.errors?.['pattern']">Not a valid phone</mat-error>
+        </div>
 
         <mat-form-field hintLabel="Enter URL of image" appearance="fill">
             <mat-label>Image URL</mat-label>

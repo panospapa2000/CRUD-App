@@ -23,7 +23,7 @@
             </div>
             <br>
             <mat-form-field appearance="fill">
-                <mat-label>Enter your email</mat-label>
+                <mat-label>Εmail</mat-label>
                 <input matInput formControlName="email" placeholder="someone@example.com">
             </mat-form-field>
             <div *ngIf="email.invalid && (email.dirty || email.touched)">
@@ -44,10 +44,8 @@
                 <input matInput formControlName="image">
                 <mat-error>Image URL is required</mat-error>
             </mat-form-field>
+            <button [disabled]="creationForm.invalid" mat-raised-button color="primary">Create user</button>
+            <button (click)="goBack()" mat-raised-button color="warn">View list of users</button>
         </form>
     </mat-card-content>
-    <mat-card-actions>
-        <button [disabled]="creationForm.invalid" mat-raised-button color="primary">Create user</button>
-        <button (click)="goBack()" mat-raised-button color="warn">View list of users</button>
-    </mat-card-actions>
 </mat-card>

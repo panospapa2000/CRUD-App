@@ -20,7 +20,7 @@ export class UpdateComponent implements OnInit {
     firstName: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
     lastName: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
     email: new FormControl('', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
-    phone: new FormControl('', [Validators.required, Validators.pattern('(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})')]),
+    phone: new FormControl('', [Validators.required, Validators.pattern('[+][0-9 ]+')]),
     image: new FormControl('', Validators.required)
   })
 
@@ -42,14 +42,7 @@ export class UpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.updateForm = new FormGroup({
-    //   id: new FormControl({ value: '', disabled: true }),
-    //   firstName: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-    //   lastName: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-    //   email: new FormControl('', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
-    //   phone: new FormControl('', [Validators.required, Validators.pattern('[+][0-9 ]+')]),
-    //   image: new FormControl('', Validators.required)
-    // })
+    
   }
 
   changeForm(id: number) {
@@ -75,19 +68,19 @@ export class UpdateComponent implements OnInit {
     }
   }
 
-//   get firstName(){
-//     return this.updateForm.get('firstName');
-//   }
+  get firstName(){
+    return this.updateForm.get('firstName');
+  }
 
-//   get lastName(){
-//     return this.updateForm.get('lastName');
-//   }
+  get lastName(){
+    return this.updateForm.get('lastName');
+  }
 
-//   get email(){
-//     return this.updateForm.get('email');
-//   }
+  get email(){
+    return this.updateForm.get('email');
+  }
 
-//   get phone(){
-//     return this.updateForm.get('phone');
-//   }
+  get phone(){
+    return this.updateForm.get('phone');
+  }
 }

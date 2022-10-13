@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserModel } from '../Model/userModel';
 import { UserService } from '../user.service';
 
 @Component({
@@ -43,13 +44,10 @@ export class CreateComponent implements OnInit {
   }
 
   createUserFunction(){
-    if(this.creationForm.valid)
-    {
       this.userService.createUser(this.creationForm.value).subscribe(item => {
         this.createData = item;
         window.alert("This user has been successfully created!!!");
       })
-    }
   }
 
   goBack(){

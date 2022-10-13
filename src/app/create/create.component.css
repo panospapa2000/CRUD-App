@@ -4,3 +4,10 @@
     align-items: flex-start;
 }
 
+.mat-card-title{
+    color:rgb(0, 47, 255);
+}
+
+.mat-card{
+    background: rgb(255, 229, 63);
+}

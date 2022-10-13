@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 
 @Component({
@@ -8,29 +9,37 @@ import { UserService } from '../user.service';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
+
+  creationForm : any;
   createData : any;
-  email = new FormControl('', [Validators.required, Validators.email]);
-  constructor(private userService: UserService)  { }
+  
+  constructor(private userService: UserService, private routing: Router)  { }
 
   ngOnInit(): void {
-
+    this.creationForm = new FormGroup({
+      id: new FormControl(''),
+      firstName: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
+      lastName: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
+      email: new FormControl('', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
+      phone: new FormControl('', [Validators.required, Validators.pattern('[+][0-9 ]+')]),
+      image: new FormControl('', Validators.required)
+    })
   }
 
-  creationForm = new FormGroup({
-    id: new FormControl(''),
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
-    phone: new FormControl('', Validators.required),
-    image: new FormControl('', Validators.required)
-  })
+  get firstName(){
+    return this.creationForm.get('firstName');
+  }
 
-  getEmailErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+  get lastName(){
+    return this.creationForm.get('lastName');
+  }
 
+  get email(){
+    return this.creationForm.get('email');
+  }
+
+  get phone(){
+    return this.creationForm.get('phone');
   }
 
   createUserFunction(){
@@ -41,5 +50,9 @@ export class CreateComponent implements OnInit {
         window.alert("This user has been successfully created!!!");
       })
     }
+  }
+
+  goBack(){
+    this.routing.navigate(['view']);
   }
 }

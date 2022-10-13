@@ -1,6 +1,6 @@
 <h1>Update User</h1>
 <div class="updateForm">
-    <form [formGroup]='form'>
+    <form [formGroup]='updateForm'>
         <mat-form-field appearance="fill">
             <mat-label>User ID</mat-label>
             <input matInput #inputImage formControlName="id">
@@ -21,12 +21,11 @@
         <mat-form-field appearance="fill">
             <mat-label>Enter your email</mat-label>
             <input matInput formControlName="email">
-            <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
         </mat-form-field>
 
         <mat-form-field hintLabel="+CountryCode Number" appearance="fill">
             <mat-label>Phone number</mat-label>
-            <input matInput placeholder="e.g. +30 6991520547" formControlName="phone">
+            <input matInput placeholder="e.g. +306991520547" formControlName="phone">
         </mat-form-field>
 
         <mat-form-field hintLabel="Enter URL of image" appearance="fill">

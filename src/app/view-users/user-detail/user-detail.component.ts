@@ -26,7 +26,7 @@ export class UserDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getHero();
   }
-
+ 
   getHero(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.heroService.getHero(id)
@@ -43,9 +43,12 @@ export class UserDetailComponent implements OnInit {
     }
   }
 
-  delete(hero: User): void {
-    this.heroService.deleteHero(hero.id).subscribe(() => this.goBack());
+  delete(user: User): void {
+    if(confirm("Are you sure you want to delete user: "+ user.firstName + " " + user.lastName + "? "))
+    this.heroService.deleteHero(user.id).subscribe(() => this.goBack());
   } 
+
+  
 
 
   title = 'imgtobase64';

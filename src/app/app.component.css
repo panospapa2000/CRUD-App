@@ -3,15 +3,15 @@
   margin: 10px;
   border: 1px solid #555;
 }
-.btn-group button {
-  background-color: #04AA6D; /* Green background */
-  border: 1px solid green; /* Green border */
-  color: white; /* White text */
-  margin-bottom: 10px;
+ .btn-group button {
+  background-color: #6837acd1; 
+  border: 1px solid black; 
+  color: white;
+  margin-bottom: 10px; 
 
-  cursor: pointer; /* Pointer/hand icon */
-  width: 100%; /* Set a width if needed */
-  display: block; /* Make the buttons appear below each other */
+  cursor: pointer;
+  width: 100%; 
+  display: block;
 }
 
 .btn-group button:not(:last-child) {
@@ -20,5 +20,5 @@
 
 /* Add a background color on hover */
 .btn-group button:hover {
-  background-color:grey
+  background-color: #682968;
 }

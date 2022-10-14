@@ -8,18 +8,9 @@ label {
     margin-bottom: .5rem;
   
   }
-  input {
-    padding: .5rem;
-    width: 100%;
-    max-width: 600px;
-    box-sizing: border-box;
-    display: block;
+  h1{
+    margin:10px;
   }
-  
-  input:focus {
-    outline: #336699 auto 1px;
-  }
-  
   li {
     list-style-type: none;
   }

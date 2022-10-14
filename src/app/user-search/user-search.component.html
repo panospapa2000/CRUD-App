@@ -1,23 +1,32 @@
 <div class="container-fluid">
   <mat-toolbar color="primary">
-    Title
+    <a mat-stroked-button href=""><mat-icon>home</mat-icon></a> 
+    <h1>Search Users</h1>
   </mat-toolbar>
 
 <div id="search-component">
  
-    <label for="search-box">User Search</label><br>
-    <p>Search via:</p>
-    <select (change)="searchoption($event)">
-      <option value="id">ID</option>
-      <option value="firstName">First Name</option>
-      <option value="lastName">Last Name</option>
-      <option value="email">Email</option>
-      <option value="phone">Phone</option>
-      <option value="image">Image URL</option>
-  </select>
+    <label for="search-box">User Search</label> <br>
+<mat-form-field>
+  <mat-label>Choose search parameter type</mat-label>
+  <select matNativeControl (change)="searchoption($event)">
+    <option value="id">ID</option>
+    <option value="firstName">First Name</option>
+    <option value="lastName">Last Name</option>
+    <option value="email">Email</option>
+    <option value="phone">Phone</option>
+    <option value="image">Image URL</option>
+</select>
+</mat-form-field>
+    
      <br>
- 
-    <input #searchBox id="search-box" (input)="search(searchBox.value)" /> <br>
+  <mat-form-field style="width:800px !important">
+    <mat-label>Search parameter</mat-label>
+    <input matInput name="search-box" #searchBox id="search-box" (input)="search(searchBox.value)" /> <br>
+    <button matSuffix mat-icon-button aria-label="Clear" (click)="searchBox.value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
 
   
     <ul class="search-result">

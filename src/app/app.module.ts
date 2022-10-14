@@ -14,14 +14,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { AddUsersComponent } from './add-users/add-users.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './shared/in-memory-data.service';
 import { ViewUsersComponent } from './view-users/view-users.component';
 import { FormsModule, FormControl, FormGroup } from '@angular/forms';
 import { MessagesComponent } from './shared/messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserDetailComponent } from './view-users/user-detail/user-detail.component';
-import { DeleteUserComponent } from './delete-user/delete-user.component';
 import { UserSearchComponent } from './user-search/user-search.component';
 import {MatListModule} from '@angular/material/list';
 import { CoreComponent } from './core/core.component';
@@ -30,7 +27,10 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
 import { ModelsComponent } from './core/models/models.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
+import {MatSelectModule} from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -41,7 +41,6 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MessagesComponent,
     DashboardComponent,
     UserDetailComponent,
-    DeleteUserComponent,
     UserSearchComponent,
     CoreComponent,
     SharedComponent,
@@ -65,6 +64,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     FormsModule,
     MatMenuModule,
     MatPaginatorModule,
+    MatSelectModule,
+    MatGridListModule,
+    MatCardModule,
+    MatDialogModule,
     RouterModule.forRoot([    ])
   ],
   providers: [],

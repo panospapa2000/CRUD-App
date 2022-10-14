@@ -1,41 +1,83 @@
 <div class="container-fluid">
   <mat-toolbar color="primary">
-    Title
-  </mat-toolbar>
+     <a mat-stroked-button href=""><mat-icon>home</mat-icon></a> 
+    <h1>User Details</h1>
+  </mat-toolbar> <br>
+
+  
 
 <div *ngIf="user">
+  <mat-card class="example-card">
+    <mat-card-title-group>
+      <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
+      <mat-card-subtitle><mat-icon>perm_contact_calendar</mat-icon> ID: {{user.id}}</mat-card-subtitle>
+      <a href="{{user.image}}" target="_blank" rel="noopener noreferrer"><img mat-card-md-image src={{user.image}} > </a>
+    </mat-card-title-group>
+    <mat-card-content>
+      <mat-icon>phone</mat-icon>  <a mat-stroked-button href="tel:{{user.phone}}" target="_blank">{{user.phone}}</a>
+      <mat-icon>email</mat-icon>  <a mat-stroked-button href="mailto:{{user.email}}" target="_blank">{{user.email}}</a>
+    </mat-card-content>
+  </mat-card><br>
+  
     <h2>{{user.firstName | uppercase}} Details</h2>
-    <label for="user-firstname">ID: </label>{{user.id}}
+
+    
     <div>
-      <label for="hero-firstname">First name: </label>
-      <input id="hero-firstname" ngModel name="firstname1" #firstname1="ngModel" [(ngModel)]="user.firstName" pattern="[A-Za-z]{2,50}" placeholder="First name" required/><br>
-      <label for="hero-lastName">Last name: </label>
-      <input id="hero-lastName" ngModel name="lastname1" #lastname1="ngModel" [(ngModel)]="user.lastName" pattern="[A-Za-z]{2,50}" placeholder="Last name" required /><br>
-      <label for="hero-email">Email: </label>
-      <input id="hero-email" type="email" ngModel name="email1" #email1="ngModel" [(ngModel)]="user.email" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{1,}([.][a-zA-Z]{1,}|[.][\w-]{1,}[.][a-zA-Z]{1,})$" placeholder="Email" required/><br>
-      <label for="hero-lastName">Phone number: </label> 
-      <input type="tel" id="hero-phone" ngModel name="tel1" #tel1="ngModel"  [(ngModel)]="user.phone" pattern="[+][0-9 ]+" placeholder="+123 456 789 012" required/><br>
-      <label for="hero-image">Image: </label><br><img src="{{user.image}}"/> <br>
-      <label for="hero-image">Input new Image link: </label>
-      <input type="text" id="hero-image" ngModel name="url1" #url1="ngModel" [(ngModel)]="user.image" pattern="(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif))|(^data:image.*)" required placeholder="Image Url"/><br>
-        
+
+      <mat-icon>perm_contact_calendar</mat-icon> <mat-form-field class="example-form-field" appearance="outline">
+        <mat-label>ID</mat-label>
+        <input matInput disabled value={{user.id}}>
+      </mat-form-field> <br>
+
+      <mat-icon>person_outline</mat-icon> <mat-form-field class="example-form-field" appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput id="firstname" [(ngModel)]="user.firstName" ngModel name="firstname1" #firstname1="ngModel"  pattern="[A-Za-z]{2,50}" placeholder="First name" required />
+        <mat-error>Valid First Name is required</mat-error>
+      </mat-form-field> <br>
+
+      <mat-icon>person</mat-icon><mat-form-field class="example-form-field" appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput id="hero-lastName" ngModel name="lastname1" #lastname1="ngModel" [(ngModel)]="user.lastName" pattern="[A-Za-z]{2,50}" placeholder="Last name" required />
+        <mat-error>Valid last name is required</mat-error>
+      </mat-form-field> <br>
+
+      <mat-icon> email</mat-icon><mat-form-field class="example-form-field" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput id="hero-email" type="email" ngModel name="email1" #email1="ngModel" [(ngModel)]="user.email" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{1,}([.][a-zA-Z]{1,}|[.][\w-]{1,}[.][a-zA-Z]{1,})$" placeholder="Email" required/>
+        <mat-error>Valid email is required</mat-error>
+      </mat-form-field> <br>
+
+      <mat-icon> phone</mat-icon><mat-form-field class="example-form-field" appearance="outline">
+        <mat-label>Phone</mat-label>
+        <input matInput type="tel" id="hero-phone" ngModel name="tel1" #tel1="ngModel"  [(ngModel)]="user.phone" pattern="[+][0-9 ]+" placeholder="+123 456 789 012" required/>
+        <mat-error>Valid phone number is required</mat-error>
+      </mat-form-field> <br>
+      
+      <mat-icon>link</mat-icon><mat-form-field class="example-form-field" appearance="outline">
+        <mat-label>Image URL/Base64</mat-label>
+        <input matInput type="text" id="hero-image" ngModel name="url1" #url1="ngModel" [(ngModel)]="user.image" pattern="(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif|))|(^data:image.*)" required placeholder="Image Url"/>
+        <mat-error>Valid link/base64 is required</mat-error>
+      </mat-form-field> <br>
+
+      <img src="{{user.image}}"/> <br>
+              
     </div>
+    
     <br>
     <label>Upload an image to convert to base64 format for usage above:</label><br>
-    <input type="file" id="img" name="img" accept="image/*" (change)="onChange($event)" />
+    <input #ImageInput hidden="true" type="file" onclick="this.value=null" (change)="onChange($event)" accept="image/*"/>
+  <button mat-flat-button color="primary" (click)="ImageInput.click()">Choose Image File</button>
  
     <div *ngIf="myimage">
       <p>Image Preview:</p>
-      <img [src]="myimage" width="200px" height="100px" alt="" />
-      <input type="text" id="basecode" [(ngModel)]="base64code">
-      <button (click)="copyText(base64code)">Click to copy text</button>
+      <img [src]="myimage" width="200px" height="100px" alt="" /> <br>
+      <button mat-flat-button color="primary" (click)="user.image=base64code">Use the above image</button>
 
     </div> 
     <br>
-    <button type="button" (click)="goBack()">go back</button>     
-    <button type="button" [disabled]="firstname1.invalid || lastname1.invalid || email1.invalid || tel1.invalid || url1.invalid" (click)="save()">save</button>
     
-   <button type="button" class="delete" title="delete hero" (click)="delete(user)">delete</button>
-    
+    <button mat-flat-button color="primary" (click)="goBack()">go back</button>     
+    <button mat-flat-button color="primary" [disabled]="firstname1.invalid || lastname1.invalid || email1.invalid || tel1.invalid || url1.invalid" (click)="save()">save</button>
+    <button mat-flat-button color="primary" class="delete" title="delete hero" (click)="delete(user)">delete</button>
 
   </div>

@@ -1,47 +1,57 @@
 <div class="container-fluid">
   <mat-toolbar color="primary">
-    Title
+    <a mat-stroked-button href=""><mat-icon>home</mat-icon></a> 
+    <button mat-stroked-button (click)="goBack()"><mat-icon>arrow_back</mat-icon></button> 
+   <h1>Add Users</h1> 
   </mat-toolbar>
   <br>
+  <h1>Add User Details:</h1>
 
-<div class="form-group col-md-6">
+  <mat-icon>person_outline</mat-icon><mat-form-field class="example-form-field" appearance="outline">
+    <mat-label>First Name</mat-label>
+    <input matInput type="text" placeholder="John" id="firstname" ngModel name="firstname1" #firstname1="ngModel" pattern="[A-Za-z]{2,50}" #firstname required />
+  <mat-error>Valid First Name is required</mat-error>
+  </mat-form-field> <br>
 
-    
-    <label for="new-user">First name: </label>
-    <input id="firstname" ngModel name="firstname1" #firstname1="ngModel" pattern="[A-Za-z]{2,50}" #firstname required /> <br><br>
-    <label for="new-user" >Last name: </label>
-    <input id="lastname" ngModel name="lastname1" #lastname1="ngModel" pattern="[A-Za-z]{2,50}" #lastname required /> <br><br>
-    <label for="user-email">Email: </label>
-    <input type="text" ngModel name="email1" #email1="ngModel" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{1,}([.][a-zA-Z]{1,}|[.][\w-]{1,}[.][a-zA-Z]{1,})$" id="new-user" #email required/> <br><br>
-    <label for="user-phone">Phone: </label>
-    <input type="tel" id="tel" ngModel name="tel" #tel="ngModel"  pattern="[+][0-9 ]+" #phone required />
-    <p>Format +123 456 789 012</p>
-    <label for="new-user">Image url/base64: </label>
-    <input type="url" ngModel name="url" id="new-user" #url="ngModel" pattern="(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif))|(^data:image.*)" #image required/> <br>
-  <br>
+  
+  <mat-icon>person</mat-icon><mat-form-field class="example-form-field" appearance="outline">
+    <mat-label>Last Name</mat-label>
+    <input matInput type="text" placeholder="Doe" id="lastname" ngModel name="lastname1" #lastname1="ngModel" pattern="[A-Za-z]{2,50}" #lastname required />
+  <mat-error>Valid last name is required</mat-error>
+  </mat-form-field> <br>
+
+  <mat-icon> email</mat-icon><mat-form-field class="example-form-field" appearance="outline">
+    <mat-label>Email</mat-label>
+    <input  matInput type="text" placeholder="email@email.com" ngModel name="email1" #email1="ngModel" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{1,}([.][a-zA-Z]{1,}|[.][\w-]{1,}[.][a-zA-Z]{1,})$" id="new-user" #email required/>
+  <mat-error>Valid email is required</mat-error>
+  </mat-form-field> <br>
+
+  <mat-icon> phone</mat-icon><mat-form-field class="example-form-field" appearance="outline">
+    <mat-label>Phone</mat-label>
+    <input matInput type="tel" placeholder="+123 456 789 012" id="tel" ngModel name="tel" #tel="ngModel"  pattern="[+][0-9 ]+" #phone required />
+ <mat-error>Valid phone number is required</mat-error>
+  </mat-form-field><br>
+
+  <mat-icon>link</mat-icon> <mat-form-field class="example-form-field" appearance="outline">
+      <mat-label>Image url/base64</mat-label>
+      <input matInput type="url" placeholder="http://site.com/image.png" ngModel name="url" id="url" #url="ngModel" pattern="(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif))|(^data:image.*)" #image required/>
+   <mat-error>Valid link/base64 is required</mat-error>
+    </mat-form-field> <br>
+
   <label>Upload an image to convert it to base64 format for usage above:</label><br>
-  <input type="file" id="img" name="img" accept="image/*" (change)="onChange($event)" />
+  <input #ImageInput hidden="true" type="file" onclick="this.value=null" (change)="onChange($event)" accept="image/*"/>
+  <button mat-flat-button color="primary" (click)="ImageInput.click()">Choose Image File</button>
+
   <br>
   <div *ngIf="myimage">
     <p>Image Preview:</p>
-    <img [src]="myimage" width="200px" height="100px" alt="" />
-    <input type="text" id="basecode" [(ngModel)]="base64code">
-    <button (click)="copyText(base64code)">Click to copy text</button>
+    <img [src]="myimage" width="200px" height="100px" alt="" /> <br>
+    <button mat-flat-button color="primary" (click)="image.value=base64code">Use the image above</button>
 
   </div> 
   <br>
     
-    <button type="button" [disabled]="url.invalid || tel.invalid || lastname1.invalid || firstname1.invalid || email1.invalid"  class="add-button" name="button1" (click)="add(firstname.value,lastname.value,email.value,phone.value,image.value); 
+    <button mat-flat-button color="primary" [disabled]="url.invalid || tel.invalid || lastname1.invalid || firstname1.invalid || email1.invalid"  class="add-button" name="button1" (click)="add(firstname.value,lastname.value,email.value,phone.value,image.value); 
     firstname.value=''; lastname.value=''; email.value=''; phone.value=''; image.value=''">
       Add User
-    </button> 
-    
-
-  </div>   
-  <div class="form-group col-md-6">
-
-  </div>
-  
-  
-  <!-- (click) passes input value to add() and then clears the input -->
-  
+    </button> <br>

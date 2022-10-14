@@ -1,11 +1,20 @@
-input:invalid {
-    border: 2px dashed red;
+h1{
+    margin:10px;
   }
-  
-  input:invalid:required {
-    background-image: linear-gradient(to right, pink, lightgreen);
+  button {
+    
+
+    padding: 12px 28px;
+    
+    font-size: 1rem;
+    margin: 10px;
+
   }
-  
-  input:valid {
-    border: 2px solid black;
+  button:hover {
+    background-color: #682968;
+  }
+  button:disabled {
+    background-color: #eee;
+    color: #ccc;
+    cursor: auto;
   }

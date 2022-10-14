@@ -4,6 +4,7 @@ import { User } from '../core/models/user';
 import { HeroService } from '../shared/hero.service';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { Observable, Subscriber } from 'rxjs';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -13,10 +14,12 @@ import { Observable, Subscriber } from 'rxjs';
 })
 export class AddUsersComponent implements OnInit {
   users: User[] = [];
+  test: string="0"
   
   
 constructor(private heroService: HeroService,
-  private clipboard: Clipboard) { }
+  private clipboard: Clipboard,
+  private location: Location) { }
 
   ngOnInit(): void {
   }
@@ -68,9 +71,9 @@ constructor(private heroService: HeroService,
   copyText(textToCopy: string) {
     this.clipboard.copy(textToCopy);
 }
-  
 
-
-
+goBack(): void {
+  this.location.back();
+}
 }
 

@@ -2,32 +2,21 @@
 label {
     color: #435960;
     font-weight: bold;
+    
   }
-  input {
-    font-size: 1em;
-    padding: .5rem;
-  }
-
-  input:invalid {
-    border: 2px dashed red;
-  }
-  
-  input:invalid:required {
-    background-image: linear-gradient(to right, pink, lightgreen);
-  }
-  
-  input:valid {
-    border: 2px solid black;
+  h1{
+    margin-left:10px;
   }
   button {
-    margin-top: 20px;
-    background-color: #eee;
-    padding: 1rem;
+    padding: 14px 28px;
     border-radius: 4px;
     font-size: 1rem;
+    margin: 10px;
+    justify-content: center;
+
   }
   button:hover {
-    background-color: #cfd8dc;
+    background-color: #682968;
   }
   button:disabled {
     background-color: #eee;
@@ -40,3 +29,6 @@ label {
   padding: 5px;
   width: 150px;
   } 
+  .example-card {
+    max-width: 400px;
+  }

@@ -1,37 +1,66 @@
   <div class="container-fluid">
     <mat-toolbar color="primary">
-      Title
+      <a mat-stroked-button href=""><mat-icon>home</mat-icon></a> 
+      <h1>View Users</h1>
     </mat-toolbar>
 
     <mat-paginator 
     [length]=usersorg.length
     [pageSize]= 5
     [pageSizeOptions]="[5, 10, 25, 100]"
+    [showFirstLastButtons]="true"
     (page)="onPageChange($event)">
+    
     </mat-paginator>
 
     
-    
-    <select (change)="sortoption($event)">
-      <option value="id">ID</option>
-      <option value="firstName">First Name</option>
-      <option value="lastName">Last Name</option>
-      <option value="email">Email</option>
-      <option value="phone">Phone</option>
-      <option value="image">Image URL</option>
-  </select>
+<mat-form-field>
+  <mat-label>Choose sort</mat-label>
+  <select matNativeControl (change)="sortoption($event)">
+    <option value="id">ID</option>
+    <option value="firstName">First Name</option>
+    <option value="lastName">Last Name</option>
+    <option value="email">Email</option>
+    <option value="phone">Phone</option>
+    <option value="image">Image URL</option>
+</select>
+</mat-form-field>
 
-  <select (change)="sortdirection($event)">
+
+    
+<mat-form-field>
+  <mat-label>Choose direction</mat-label>
+  <select matNativeControl (change)="sortdirection($event)">
     <option value="asc">Ascending</option>
     <option value="desc">Descending</option>
-</select>
+  </select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Choose number of Columns</mat-label>
+  <select matNativeControl (change)="colnum($event)">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+</mat-form-field>
+  
  
 <br>
-
+</div>
 <ul class="users">
-  <li *ngFor="let user of users">
-    <a routerLink="./detail/{{user.id}}">
-    <span class="badge">{{user.id}}</span> {{user.firstName}} {{user.lastName}}
-    </a>
-  </li>
+  <mat-grid-list cols={{col}} rowHeight="100px" >
+    <li *ngFor="let user of users">
+      <mat-grid-tile>
+         <a routerLink="./detail/{{user.id}}"> <span class="badge">{{user.id}}</span><img src="{{user.image}}" > {{user.firstName}} {{user.lastName}} </a>
+         <br><button mat-stroked-button color="primary" type="button" class="delete" title="delete hero"
+         (click)="delete(user)">Delete</button>
+        </mat-grid-tile>
+     
+    </li>
+  </mat-grid-list>
+  
 </ul><!----> 
+ 

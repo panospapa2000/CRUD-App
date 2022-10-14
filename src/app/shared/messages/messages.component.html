@@ -1,7 +1,12 @@
+<mat-toolbar color="primary">
+        <a mat-stroked-button href=""><mat-icon>home</mat-icon></a> 
+        <h1>Logs</h1>
+      </mat-toolbar>
+
 <div *ngIf="messageService.messages.length">
 
     <h2>Messages</h2>
-    <button type="button" class="clear"
+    <button mat-stroked-button color="primary" type="button" class="clear"
             (click)="messageService.clear()">Clear messages</button>
     <div *ngFor='let message of messageService.messages'> {{message}} </div>
   

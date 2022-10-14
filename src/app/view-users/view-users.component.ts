@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { User } from '../core/models/user';
 import { HeroService } from '../shared/hero.service';
 
@@ -14,16 +13,20 @@ export class ViewUsersComponent implements OnInit {
   users: User[] = [];
   selectedoption: string = 'id'
   ascordesc: string = 'asc'
-  page: number = 1
+  page: number = 0
   limit: number = 5
   usersorg: User[] = [];
+  col: string = "1"
 
   sortoption (event: any) {
     //update the ui
     this.selectedoption = event.target.value;
     this.getusers();
   }
-
+  colnum (event: any) {
+    //update the ui
+    this.col = event.target.value;
+  }
   sortdirection (event: any) {
     this.ascordesc = event.target.value;
     this.getusers();
@@ -48,10 +51,20 @@ export class ViewUsersComponent implements OnInit {
     
   }
   onPageChange($event: { pageIndex: number; pageSize: number; }) {
-    this.page = $event.pageIndex
+    this.page = $event.pageIndex + 1
     this.limit = $event.pageSize
     this.getusers();
+    this.getheroes();
+    
   }
   
+  delete(user: User): void {
+    if(confirm("Are you sure you want to delete user: "+ user.firstName + " " + user.lastName + "? ")){
+      this.users = this.users.filter(h => h !== user);
+      this.heroService.deleteHero(user.id).subscribe();
+    }
+    
+    
+  } 
 }
 

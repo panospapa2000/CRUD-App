@@ -4,18 +4,17 @@
     
     <mat-drawer mode="side" opened>
         <div class="btn-group">
-            <button mat-button routerLink="dashboard">Dashboard</button>
+            <button mat-flat-button routerLink="dashboard">Dashboard</button>
             <button mat-button routerLink="users">View/Update Users</button>
             <button mat-button routerLink="addusers">Create Users</button>
-            <button mat-button routerLink="delete">Delete Users </button>
             <button mat-button routerLink="search">Search Users </button>
+            <button mat-button routerLink="logs">Logs </button>
         </div>
         
     </mat-drawer>
     <mat-drawer-content>
         
         <router-outlet></router-outlet>
-        <app-messages></app-messages>
         
     </mat-drawer-content>
 

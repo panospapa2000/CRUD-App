@@ -131,7 +131,7 @@ updateHero(user: User): Observable<any> {
    */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
+      alert(error.message)
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
@@ -143,8 +143,9 @@ updateHero(user: User): Observable<any> {
     };
   }
 
-  /** Log a HeroService message with the MessageService */
+  /** Log a User Service message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
+    this.messageService.add(`User Service: ${message}`);
+    
   }
 }

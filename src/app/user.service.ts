@@ -22,6 +22,10 @@ export class UserService {
     return this.http.get<User[]>(this.url);
   }
 
+  createUser(user:any){
+    return this.http.post<any>(this.url,user,this.httpOptions);
+  }
+
   deleteUser(id:number):Observable<User>{
     const userUrl= `${this.url}/${id}`;
     return this.http.delete<User>(userUrl,this.httpOptions);

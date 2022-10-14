@@ -7,6 +7,7 @@ import {User} from '../user';
 import { MatButtonModule } from '@angular/material/button';
 import { UserService } from '../user.service';
 
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -43,6 +44,7 @@ export class UsersComponent implements OnInit {
 
 
   deleteUser(user:User):void {
+    console.log(user);
     this.userData = this.userData.filter(u=> u !==user);
     this.userService.deleteUser(user.id).subscribe(item=>{this.getUsers});
 

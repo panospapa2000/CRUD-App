@@ -1,1 +1,48 @@
-<p>create works!</p>
+<h1 mat-dialog-title> Create New User</h1>
+<form [formGroup]="userForm"(ngSubmit)="onCreate()">
+    <p>
+        <mat-form-field appearance="fill">
+          <mat-label>ID</mat-label>
+          <input matInput formControlName="id">
+          <mat-hint>Insert a number</mat-hint>
+        </mat-form-field>
+      </p>
+    <p>
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName">
+          <mat-hint>Max 20 characters</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+          <mat-hint>Max 25 Characters</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="someone@example.com" formControlName="email">
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Phone</mat-label>
+          <input matInput formControlName="phone">
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Image</mat-label>
+          <input matInput formControlName="image">
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <button mat-raised-button mat-dialog-close color="basic">Close</button>
+      <button style="margin-left: 8px;" mat-raised-button color="primary" type="submit">Save</button>
+</form>

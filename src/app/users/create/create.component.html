@@ -2,13 +2,6 @@
 <form [formGroup]="userForm"(ngSubmit)="onCreate()">
     <p>
         <mat-form-field appearance="fill">
-          <mat-label>ID</mat-label>
-          <input matInput formControlName="id">
-          <mat-hint>Insert a number</mat-hint>
-        </mat-form-field>
-      </p>
-    <p>
-        <mat-form-field appearance="fill">
           <mat-label>First Name</mat-label>
           <input matInput formControlName="firstName">
           <mat-hint>Max 20 characters</mat-hint>

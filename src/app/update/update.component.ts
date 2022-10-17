@@ -68,6 +68,15 @@ export class UpdateComponent implements OnInit {
     }
   }
 
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.updateForm.patchValue({image: reader.result});
+    };
+  }
+
   get firstName(){
     return this.updateForm.get('firstName');
   }

@@ -9,3 +9,7 @@ h1{
     flex-direction: column;
     align-items: flex-start;
 }
+
+.file-input {
+    display: none;
+  }

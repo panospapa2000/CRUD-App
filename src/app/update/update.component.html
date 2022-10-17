@@ -3,13 +3,13 @@
     <form [formGroup]='updateForm'>
         <mat-form-field appearance="fill">
             <mat-label>User ID</mat-label>
-            <input matInput #inputImage formControlName="id">
+            <input matInput formControlName="id">
         </mat-form-field>
 
         <mat-form-field hintLabel="Max 15 characters" appearance="fill">
             <mat-label>First Name</mat-label>
             <input matInput #inputFirst maxlength="15" formControlName="firstName">
-            <mat-hint align="end">{{inputFirst.value?.length || 0}}/15</mat-hint>
+            <mat-hint align="end">{{inputFirst.value.length || 0}}/15</mat-hint>
         </mat-form-field>
         <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)">
             <mat-error *ngIf="firstName?.errors?.['required']">First name is required</mat-error>
@@ -19,7 +19,7 @@
         <mat-form-field hintLabel="Max 15 characters" appearance="fill">
             <mat-label>Last Name</mat-label>
             <input matInput #inputLast maxlength="15" formControlName="lastName">
-            <mat-hint align="end">{{inputLast.value?.length || 0}}/15</mat-hint>
+            <mat-hint align="end">{{inputLast.value.length || 0}}/15</mat-hint>
         </mat-form-field>
         <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)">
             <mat-error *ngIf="lastName?.errors?.['required']">Last name is required</mat-error>
@@ -48,6 +48,14 @@
             <mat-label>Image URL</mat-label>
             <input matInput formControlName="image">
         </mat-form-field>
+
+        <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload formControlName="image">
+        <div class="file-upload">
+            {{"Click to upload an image"}}
+            <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+                <mat-icon>attach_file</mat-icon>
+            </button>
+        </div>
         <button mat-raised-button (click)="applyUpdates()" color="primary">Apply</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button mat-raised-button mat-dialog-close color="warn">Close</button>
     </form>

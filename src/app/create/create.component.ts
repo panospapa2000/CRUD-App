@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserModel } from '../Model/userModel';
 import { UserService } from '../user.service';
 
 @Component({
@@ -11,10 +10,10 @@ import { UserService } from '../user.service';
 })
 export class CreateComponent implements OnInit {
 
-  creationForm : any;
-  createData : any;
+  creationForm: any;
+  createData: any;
   
-  constructor(private userService: UserService, private routing: Router)  { }
+  constructor(private userService: UserService, private routing: Router) { }
 
   ngOnInit(): void {
     this.creationForm = new FormGroup({
@@ -27,30 +26,30 @@ export class CreateComponent implements OnInit {
     })
   }
 
-  get firstName(){
+  get firstName() {
     return this.creationForm.get('firstName');
   }
 
-  get lastName(){
+  get lastName() {
     return this.creationForm.get('lastName');
   }
 
-  get email(){
+  get email() {
     return this.creationForm.get('email');
   }
 
-  get phone(){
+  get phone() {
     return this.creationForm.get('phone');
   }
 
-  createUserFunction(){
-      this.userService.createUser(this.creationForm.value).subscribe(item => {
-        this.createData = item;
-        window.alert("This user has been successfully created!!!");
-      })
+  createUserFunction() {
+    this.userService.createUser(this.creationForm.value).subscribe(item => {
+      this.createData = item;
+      window.alert("This user has been successfully created!!!");
+    })
   }
 
-  goBack(){
+  goBack() {
     this.routing.navigate(['view']);
   }
 }

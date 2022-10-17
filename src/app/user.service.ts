@@ -20,7 +20,7 @@ export class UserService {
     return this.http.get(this.apiurl + '/' + userId);
   }
 
-  createUser(inputdata: any){
+  createUser(inputdata: UserModel){
     return this.http.post(this.apiurl, inputdata);
   }
 

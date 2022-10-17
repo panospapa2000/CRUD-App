@@ -18,8 +18,8 @@ import { MatInputModule} from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatCardModule} from '@angular/material/card';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -46,6 +46,7 @@ import {MatCardModule} from '@angular/material/card';
     ReactiveFormsModule,
     MatDialogModule,
     MatCardModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

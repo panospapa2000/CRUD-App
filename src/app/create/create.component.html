@@ -1,7 +1,7 @@
 <mat-card>
     <mat-card-title>USER REGISTRATION</mat-card-title>
     <mat-card-content>
-        <form class="createUserForm" [formGroup]="creationForm" (ngSubmit)="createUserFunction()">
+        <form class="createUserForm" [formGroup]="creationForm">
             <mat-form-field hintLabel="Max 15 characters" appearance="fill">
                 <mat-label>First Name</mat-label>
                 <input matInput #inputFirst maxlength="15" formControlName="firstName">
@@ -44,7 +44,9 @@
                 <input matInput formControlName="image">
                 <mat-error>Image URL is required</mat-error>
             </mat-form-field>
-            <button [disabled]="creationForm.invalid" mat-raised-button color="primary">Create user</button>
+            <button [disabled]="creationForm.invalid" (click)="createUserFunction()" mat-raised-button
+                color="primary">Create user</button>
+            <br>
             <button (click)="goBack()" mat-raised-button color="warn">View list of users</button>
         </form>
     </mat-card-content>

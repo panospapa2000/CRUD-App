@@ -24,10 +24,10 @@ export class ViewComponent implements OnInit {
   constructor(private userService: UserService, private _liveAnnouncer: LiveAnnouncer, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.getUsers();
+    this.getUsersFunction();
   }
 
-  getUsers() {
+  getUsersFunction() {
     this.userService.getUsers().subscribe(item => {
       this.userDetail = item;
       this.dataSource = new MatTableDataSource<UserModel>(this.userDetail);
@@ -52,14 +52,14 @@ export class ViewComponent implements OnInit {
   updateUserFunction(element: UserModel) {
     this.dialog.open(UpdateComponent, {
       width: '250px', height: '600px', enterAnimationDuration: '1000ms', exitAnimationDuration: '1000ms', data: element
-    }).afterClosed().subscribe(item=> {this.getUsers();})
+    }).afterClosed().subscribe(item=> {this.getUsersFunction();})
   }
 
   deleteUserFunction(id: number) {
     if (confirm("Are you sure you want to delete this user with ID " + id + "?")) {
       this.userService.deleteUser(id).subscribe(item => {
         window.alert("This user has been deleted");
-        this.getUsers();
+        this.getUsersFunction();
       })
     }
   }

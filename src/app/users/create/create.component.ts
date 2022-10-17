@@ -17,12 +17,28 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
     this.userForm = new FormGroup({
       id: new FormControl(''),
-      firstName: new FormControl('',Validators.required),
-      lastName: new FormControl('',Validators.required),
-      email: new FormControl('',Validators.required),
-      phone: new FormControl('',Validators.required),
+      firstName: new FormControl('',[Validators.required, Validators.pattern('[a-zA-Z]+$')]),
+      lastName: new FormControl('',[Validators.required, Validators.pattern('[a-zA-Z]+$')]),
+      email: new FormControl('',[Validators.required,Validators.email]),
+      phone: new FormControl('',[Validators.required,Validators.pattern('[+][0-9 ]+')]),
       image: new FormControl('',Validators.required)
     });
+  }
+
+  get firstName() {
+    return this.userForm.get('firstName');
+  }
+
+  get lastName() {
+    return this.userForm.get('lastName');
+  }
+
+  get email() {
+    return this.userForm.get('email');
+  }
+
+  get phone() {
+    return this.userForm.get('phone');
   }
 
 

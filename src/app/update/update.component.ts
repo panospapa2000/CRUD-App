@@ -69,12 +69,25 @@ export class UpdateComponent implements OnInit {
   }
 
   onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      this.updateForm.patchValue({image: reader.result});
-    };
+    let file: File = event.target.files[0];
+    if (!this.imageValidator(file.name)) {
+      window.alert("Selected file format is not supported. Please select a file with .png, .jpg or .jpeg extension.");
+    }
+    else {
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.updateForm.patchValue({ image: reader.result });
+      };
+    }
+  }
+
+  imageValidator(name: string) {
+    var extension = name.substring(name.lastIndexOf('.') + 1);
+    if (extension.toLowerCase() == 'png' || extension.toLowerCase() == 'jpg' || extension.toLowerCase() == 'jpeg') {
+      return true
+    }
+    else { return false; }
   }
 
   get firstName(){

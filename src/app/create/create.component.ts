@@ -18,7 +18,7 @@ export class CreateComponent implements OnInit {
     lastName: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
     email: new FormControl('', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
     phone: new FormControl('', [Validators.required, Validators.pattern('[+][0-9 ]+')]),
-    image: new FormControl('')
+    image: new FormControl('', Validators.required)
   })
 
   constructor(private userService: UserService, private routing: Router) { }
@@ -51,12 +51,25 @@ export class CreateComponent implements OnInit {
   }
 
   onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      this.creationForm.patchValue({image: reader.result});
-    };
+    let file: File = event.target.files[0];
+    if (!this.imageValidator(file.name)) {
+      window.alert("Selected file format is not supported. Please select a file with .png, .jpg or .jpeg extension.");
+    }
+    else {
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.creationForm.patchValue({ image: reader.result });
+      };
+    }
+  }
+  //Added custom validator for supporting specific files
+  imageValidator(name: string) {
+    var extension = name.substring(name.lastIndexOf('.') + 1);
+    if (extension.toLowerCase() == 'png' || extension.toLowerCase() == 'jpg' || extension.toLowerCase() == 'jpeg') {
+      return true
+    }
+    else { return false; }
   }
 
   goBack() {

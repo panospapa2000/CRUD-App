@@ -19,12 +19,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
 import { CreateComponent } from './users/create/create.component';
+import { UpdateComponent } from './users/update/update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
     CreateComponent,
+    UpdateComponent,
   
   ],
   imports: [

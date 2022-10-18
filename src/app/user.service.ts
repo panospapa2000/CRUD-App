@@ -15,7 +15,7 @@ export class UserService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  url='http://onelity.azurewebsites.net/users';
+  url='http://onelity.azurewebsites.net/users/';
 
 
   getUsers():Observable<User[]> {
@@ -24,6 +24,10 @@ export class UserService {
 
   createUser(user:any){
     return this.http.post<any>(this.url,user,this.httpOptions);
+  }
+
+  updateUser(user:any,id:number){
+    return this.http.put<any>(this.url+id,user)
   }
 
   deleteUser(id:number):Observable<User>{

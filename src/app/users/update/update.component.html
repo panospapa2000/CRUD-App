@@ -1,0 +1,57 @@
+<h1 mat-dialog-title> Edit User</h1>
+<form [formGroup]="userForm" (ngSubmit)="updateUser()">
+    <p>
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput maxlength="20" formControlName="firstName">
+          <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert">
+            <mat-error *ngIf="firstName.errors.required">Please enter a First Name</mat-error>
+            <mat-error *ngIf="firstName.errors.pattern">Must contain Letters</mat-error>
+        </div>
+          <mat-hint>Max 20 characters</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput maxlength="25" formControlName="lastName">
+          <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert">
+            <mat-error *ngIf="lastName.errors.required">Please enter a Last Name</mat-error>
+            <mat-error *ngIf="lastName.errors.pattern">Must contain Letters</mat-error>
+        </div>
+          <mat-hint>Max 25 characters</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="someone@example.com" formControlName="email">
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
+            <mat-error *ngIf="email.errors.required">Please enter an email address</mat-error>
+            <mat-error *ngIf="email.errors.email">Not a valid email address</mat-error>
+        </div>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Phone</mat-label>
+          <input matInput formControlName="phone">
+          <div *ngIf="phone.invalid && (phone.dirty ||phone.touched)" class="alert">
+            <mat-error *ngIf="phone.errors.required">Please enter a phone number</mat-error>
+            <mat-error *ngIf="phone.errors.pattern">Is not a valid phone </mat-error>
+            </div>
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Image</mat-label>
+          <input matInput formControlName="image">
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <button mat-raised-button mat-dialog-close color="basic">Close</button>
+      <button style="margin-left: 8px;" mat-raised-button color="primary"[disabled]="userForm.invalid" type="submit">Update</button>
+</form>

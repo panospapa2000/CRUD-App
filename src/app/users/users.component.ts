@@ -6,6 +6,8 @@ import {MatTableDataSource} from '@angular/material/table';
 import {User} from '../user';
 import { MatButtonModule } from '@angular/material/button';
 import { UserService } from '../user.service';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { UpdateComponent } from './update/update.component';
 
 
 @Component({
@@ -22,7 +24,7 @@ export class UsersComponent implements OnInit {
   dataSource: MatTableDataSource<User>= new MatTableDataSource();
 
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,public dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -50,4 +52,13 @@ export class UsersComponent implements OnInit {
 
   }
 
+  openUpdateDialog(element :any) {
+    this.dialog.open(UpdateComponent, {
+          width:'30%',
+          data:element
+    });
+  }
 }
+
+  
+

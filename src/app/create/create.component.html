@@ -47,15 +47,19 @@
             <mat-form-field appearance="fill">
                 <mat-label>Image URL</mat-label>
                 <input matInput formControlName="image">
+                <mat-error>Please insert image URL or upload an image</mat-error>
             </mat-form-field>
-
-            <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload formControlName="image">
+            <br>
+            <mat-card>
+                <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload formControlName="image">
             <div class="file-upload">
-                {{"Click to upload an image"}}
+                {{"Upload file image"}}
                 <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
                     <mat-icon>attach_file</mat-icon>
                 </button>
             </div>
+            </mat-card>
+            <br>
 
             <button [disabled]="creationForm.invalid" (click)="createUserFunction()" mat-raised-button
                 color="primary">Create user</button>

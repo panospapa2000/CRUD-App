@@ -4,14 +4,17 @@
     align-items: flex-start;
 }
 
-.mat-card-title{
-    color:rgb(175, 6, 217);
+.mat-card-title {
+    color: #7004a2;
 }
 
-.mat-card{
-    background: rgb(255, 229, 63);
+.mat-card {
+    background: rgb(230, 207, 5);
+}
+.file-upload{
+    color:#7004a2;
 }
 
 .file-input {
     display: none;
-  }
+}

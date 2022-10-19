@@ -52,14 +52,17 @@ export class ViewComponent implements OnInit {
   updateUserFunction(element: UserModel) {
     this.dialog.open(UpdateComponent, {
       width: '250px', height: '600px', enterAnimationDuration: '1000ms', exitAnimationDuration: '1000ms', data: element
-    }).afterClosed().subscribe(item=> {this.getUsersFunction();})
+    }).afterClosed().subscribe(result => {
+      const index = this.dataSource.data.findIndex( data => data.id === result.id);
+      this.dataSource.data[index] = result;
+      this.dataSource.data = [...this.dataSource.data];
+    });
   }
 
   deleteUserFunction(id: number) {
     if (confirm("Are you sure you want to delete this user with ID " + id + "?")) {
-      this.userService.deleteUser(id).subscribe(item => {
-        window.alert("This user has been deleted");
-        this.getUsersFunction();
+      this.userService.deleteUser(id).subscribe(() => {
+        this.dataSource.data = this.dataSource.data.filter((u: UserModel) => u.id !== id);
       })
     }
   }

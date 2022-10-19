@@ -1,6 +1,6 @@
 table {
     width: 100%;
-    background-color: rgb(26, 115, 193);
+    background-color: #1976d2;
   }
 
 h1 {
@@ -20,5 +20,5 @@ img {
 }
 
 th.mat-sort-header-sorting {
-  color: rgb(0, 55, 255);
+  color: white;
 }

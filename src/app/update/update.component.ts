@@ -63,7 +63,7 @@ export class UpdateComponent implements OnInit {
     if (this.updateForm.valid && (confirm("Are you sure you want to update this user?"))) {
       this.userService.updateUser(this.updateForm.getRawValue(), this.data.id).subscribe(item => {
         this.saveData = item;
-        this.dialogRef.close();
+        this.dialogRef.close(this.saveData);
       })
     }
   }

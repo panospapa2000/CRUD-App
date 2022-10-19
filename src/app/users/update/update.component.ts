@@ -1,8 +1,8 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import {FormGroup,FormControl, Validators} from '@angular/forms';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/user';
-import { UserService } from 'src/app/user.service';
+import { User } from 'src/app/core/model/user';
+import { UserService } from 'src/app/core/services/user.service';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { createInjectableType } from '@angular/compiler';
 

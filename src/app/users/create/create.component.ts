@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl, Validators} from '@angular/forms';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/user';
-import { UserService } from 'src/app/user.service';
+import { User } from 'src/app/core/model/user';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-create',

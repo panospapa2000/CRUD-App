@@ -3,9 +3,9 @@ import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort,Sort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import {User} from '../user';
+import {User} from '../core/model/user';
 import { MatButtonModule } from '@angular/material/button';
-import { UserService } from '../user.service';
+import { UserService } from '../core/services/user.service';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { UpdateComponent } from './update/update.component';
 

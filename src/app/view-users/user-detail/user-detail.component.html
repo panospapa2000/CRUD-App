@@ -11,16 +11,16 @@
   <mat-card class="example-card">
     <mat-card-title-group>
       <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
-      <mat-card-subtitle><mat-icon>perm_contact_calendar</mat-icon> ID: {{user.id}}</mat-card-subtitle>
+      <mat-card-subtitle style="margin-top: 10px" class="maticon"><mat-icon>perm_contact_calendar</mat-icon> ID: {{user.id}}</mat-card-subtitle>
       <a href="{{user.image}}" target="_blank" rel="noopener noreferrer"><img mat-card-md-image src={{user.image}} > </a>
     </mat-card-title-group>
-    <mat-card-content>
-      <mat-icon>phone</mat-icon>  <a mat-stroked-button href="tel:{{user.phone}}" target="_blank">{{user.phone}}</a>
-      <mat-icon>email</mat-icon>  <a mat-stroked-button href="mailto:{{user.email}}" target="_blank">{{user.email}}</a>
+    <mat-card-content class="maticon">
+      <mat-icon >phone</mat-icon>  <a mat-stroked-button class="matcard" href="tel:{{user.phone}}" target="_blank">{{user.phone}}</a>
+      <mat-icon>email</mat-icon>  <a mat-stroked-button class="matcard" href="mailto:{{user.email}}" target="_blank">{{user.email}}</a>
     </mat-card-content>
   </mat-card><br>
   
-    <h2>{{user.firstName | uppercase}} Details</h2>
+    <h1>{{user.firstName | uppercase}} Details</h1>
 
     
     <div>
@@ -38,25 +38,25 @@
 
       <mat-icon>person</mat-icon><mat-form-field class="example-form-field" appearance="outline">
         <mat-label>Last Name</mat-label>
-        <input matInput id="hero-lastName" ngModel name="lastname1" #lastname1="ngModel" [(ngModel)]="user.lastName" pattern="[A-Za-z]{2,50}" placeholder="Last name" required />
+        <input matInput id="user-lastName" ngModel name="lastname1" #lastname1="ngModel" [(ngModel)]="user.lastName" pattern="[A-Za-z]{2,50}" placeholder="Last name" required />
         <mat-error>Valid last name is required</mat-error>
       </mat-form-field> <br>
 
       <mat-icon> email</mat-icon><mat-form-field class="example-form-field" appearance="outline">
         <mat-label>Email</mat-label>
-        <input matInput id="hero-email" type="email" ngModel name="email1" #email1="ngModel" [(ngModel)]="user.email" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{1,}([.][a-zA-Z]{1,}|[.][\w-]{1,}[.][a-zA-Z]{1,})$" placeholder="Email" required/>
+        <input matInput id="user-email" type="email" ngModel name="email1" #email1="ngModel" [(ngModel)]="user.email" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{1,}([.][a-zA-Z]{1,}|[.][\w-]{1,}[.][a-zA-Z]{1,})$" placeholder="Email" required/>
         <mat-error>Valid email is required</mat-error>
       </mat-form-field> <br>
 
       <mat-icon> phone</mat-icon><mat-form-field class="example-form-field" appearance="outline">
         <mat-label>Phone</mat-label>
-        <input matInput type="tel" id="hero-phone" ngModel name="tel1" #tel1="ngModel"  [(ngModel)]="user.phone" pattern="[+][0-9 ]+" placeholder="+123 456 789 012" required/>
+        <input matInput type="tel" id="user-phone" ngModel name="tel1" #tel1="ngModel"  [(ngModel)]="user.phone" pattern="[+][0-9 ]+" placeholder="+123 456 789 012" required/>
         <mat-error>Valid phone number is required</mat-error>
       </mat-form-field> <br>
       
       <mat-icon>link</mat-icon><mat-form-field class="example-form-field" appearance="outline">
         <mat-label>Image URL/Base64</mat-label>
-        <input matInput type="text" id="hero-image" ngModel name="url1" #url1="ngModel" [(ngModel)]="user.image" pattern="(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif|))|(^data:image.*)" required placeholder="Image Url"/>
+        <input matInput type="text" id="user-image" ngModel name="url1" #url1="ngModel" [(ngModel)]="user.image" pattern="(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif|))|(^data:image.*)" required placeholder="Image Url"/>
         <mat-error>Valid link/base64 is required</mat-error>
       </mat-form-field> <br>
 
@@ -79,6 +79,6 @@
     
     <button mat-flat-button color="primary" class="button2" (click)="goBack()">go back</button>     
     <button mat-flat-button color="primary" class="button2" [disabled]="firstname1.invalid || lastname1.invalid || email1.invalid || tel1.invalid || url1.invalid" (click)="save()">save</button>
-    <button mat-flat-button color="primary" class="button2" title="delete hero" (click)="delete(user)">delete</button>
+    <button mat-flat-button color="primary" class="button2" title="delete user" (click)="delete(user)">delete</button>
 
   </div>

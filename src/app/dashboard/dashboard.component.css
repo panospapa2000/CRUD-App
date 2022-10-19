@@ -4,3 +4,9 @@ h1{
   margin:10px;
   text-align: center;
 }
+
+mat-icon {
+  margin-right: 10px;
+  align-items: center;
+  margin-left: 10px;
+}

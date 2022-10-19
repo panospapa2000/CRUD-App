@@ -6,7 +6,7 @@
    <h1>Add Users</h1> 
   </mat-toolbar>
   <br>
-  <h1>Add User Details:</h1>
+  <label>Add User Details</label>
 
   <mat-icon>person_outline</mat-icon><mat-form-field class="example-form-field" appearance="outline">
     <mat-label>First Name</mat-label>
@@ -41,18 +41,18 @@
 
   <label>Upload an image to convert it to base64 format for usage above:</label><br>
   <input #ImageInput hidden="true" type="file" onclick="this.value=null" (change)="onChange($event)" accept="image/*"/>
-  <button mat-flat-button color="primary" (click)="ImageInput.click()">Choose Image File</button>
+  <button class="button2" mat-flat-button color="primary" (click)="ImageInput.click()">Choose Image File</button>
 
   <br>
   <div *ngIf="myimage">
     <p>Image Preview:</p>
     <img [src]="myimage" width="200px" height="100px" alt="" /> <br>
-    <button mat-flat-button color="primary" (click)="image.value=base64code">Use the image above</button>
+    <button class="button2" mat-flat-button color="primary" (click)="image.value=base64code">Use the image above</button>
 
   </div> 
   <br>
     
-    <button mat-flat-button color="primary" [disabled]="url.invalid || tel.invalid || lastname1.invalid || firstname1.invalid || email1.invalid"  class="add-button" name="button1" (click)="add(firstname.value,lastname.value,email.value,phone.value,image.value); 
+    <button class="button2" mat-flat-button color="primary" [disabled]="url.invalid || tel.invalid || lastname1.invalid || firstname1.invalid || email1.invalid" name="button1" (click)="add(firstname.value,lastname.value,email.value,phone.value,image.value); 
     firstname.value=''; lastname.value=''; email.value=''; phone.value=''; image.value=''">
       Add User
     </button> <br>

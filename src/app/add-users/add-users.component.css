@@ -1,3 +1,38 @@
 h1{
     margin:10px;
+    
+  }
+  
+button.button2 {
+    padding: 14px 28px;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin: 10px;
+    justify-content: center;
+  }
+  
+button.button2:hover {
+    background-color: #682968;
+  } 
+  
+  button:disabled {
+    background-color: #eee;
+    color: #ccc;
+    cursor: auto;
+  }
+  label {
+    display: block;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+    margin-right: 10px;
+    margin-left: 10px;
+  
+  }
+
+  mat-icon {
+    margin-right: 10px;
+    align-items: center;
+    margin-left: 10px;
   }

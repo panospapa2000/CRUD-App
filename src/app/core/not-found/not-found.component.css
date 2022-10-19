@@ -1,0 +1,23 @@
+h1{
+    margin:10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+button {
+    padding: 14px 28px;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin: auto;
+    justify-content: center;
+    display:flex;
+    
+  }
+
+  .btn {
+    text-align: center;
+  }
+  
+button:hover {
+    background-color: #682968;
+  } 

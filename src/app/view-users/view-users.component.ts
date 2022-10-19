@@ -10,6 +10,7 @@ import { Location } from '@angular/common';
   templateUrl: './view-users.component.html',
   styleUrls: ['./view-users.component.css']
 })
+
 export class ViewUsersComponent implements OnInit {
   users: User[] = [];
   selectedoption: string = 'id'
@@ -61,7 +62,6 @@ export class ViewUsersComponent implements OnInit {
   
   delete(user: User): void {
     if(confirm("Are you sure you want to delete user: "+ user.firstName + " " + user.lastName + "? ")){
-     // 
       this.userService.deleteUser(user.id).subscribe() ;
       this.getorgusers();
       if (!(user.id in this.usersorg)){

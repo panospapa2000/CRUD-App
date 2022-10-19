@@ -61,3 +61,13 @@
   h1{
     margin:10px;
   }
+
+  mat-form-field {
+    margin: 10px;
+  }
+
+  mat-icon {
+    margin-right: 10px;
+    align-items: center;
+    margin-left: 10px;
+  }

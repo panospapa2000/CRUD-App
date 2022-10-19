@@ -1,13 +1,18 @@
-/* HeroSearch private styles */
-
 label {
     display: block;
     font-weight: bold;
     font-size: 1.2rem;
     margin-top: 1rem;
     margin-bottom: .5rem;
+    margin-left: 10px;
   
   }
+
+  mat-form-field {
+    margin-left:10px;
+    margin-bottom:10px;
+  }
+
   h1{
     margin:10px;
   }
@@ -35,4 +40,10 @@ label {
   ul.search-result {
     margin-top: 0;
     padding-left: 0;
+  }
+
+  mat-icon {
+    margin-right: 10px;
+    align-items: center;
+    margin-left: 10px;
   }

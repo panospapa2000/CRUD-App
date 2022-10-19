@@ -2,6 +2,7 @@
 label {
     color: #435960;
     font-weight: bold;
+    margin: 10px;
     
   }
   h1{
@@ -29,7 +30,35 @@ label {
     border: 1px solid #ddd;
   padding: 5px;
   width: 150px;
+  margin-left: 10px;
+  margin-bottom: 10px;
   } 
   .example-card {
     max-width: 400px;
+    align-items: center;
+    margin:10px;
+
+
   }
+  
+ .matcard{
+  align-items: center;
+  margin-right: 10px;
+  
+}
+
+a.example-card{
+  align-items: center;
+}
+
+.maticon{
+  align-items: center;
+  display:flex;
+}
+
+mat-icon {
+  margin-right: 10px;
+  align-items: center;
+  margin-left: 10px;
+  
+}

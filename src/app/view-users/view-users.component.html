@@ -53,7 +53,7 @@
 <br>
 </div>
 <ul class="users">
-  <mat-grid-list cols={{col}} rowHeight="100px" >
+  <mat-grid-list style="margin-right:10px" cols={{col}} rowHeight="100px" >
     <li *ngFor="let user of users">
       <mat-grid-tile>
          <a routerLink="./detail/{{user.id}}"> <span class="badge">{{user.id}}</span><img src="{{user.image}}" > {{user.firstName}} {{user.lastName}} </a>
@@ -64,5 +64,5 @@
     </li>
   </mat-grid-list>
   
-</ul><!----> 
+</ul>
  

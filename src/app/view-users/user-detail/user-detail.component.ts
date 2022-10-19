@@ -15,7 +15,7 @@ export class UserDetailComponent implements OnInit {
   
   user: User | undefined;
   title = 'imgtobase64';
-  myimage!: Observable<ImageBitmap>;
+  myimage!: Observable<ImageBitmap> | string;
   base64code!: string
 
   constructor(
@@ -62,7 +62,7 @@ export class UserDetailComponent implements OnInit {
   };
 
   convertToBase64(file: File) {
-    const observable = new Observable((subscriber: Subscriber<any>) => {
+    const observable = new Observable((subscriber: Subscriber<string>) => {
       this.readFile(file, subscriber);
     });
 
@@ -73,7 +73,7 @@ export class UserDetailComponent implements OnInit {
     })
   }
 
-  readFile(file: File, subscriber: Subscriber<any>) {
+  readFile(file: File, subscriber: Subscriber<string | ArrayBuffer | null>) {
     const filereader = new FileReader();
     filereader.readAsDataURL(file);
 

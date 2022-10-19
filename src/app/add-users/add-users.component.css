@@ -1,20 +1,3 @@
 h1{
     margin:10px;
   }
-  button {
-    
-
-    padding: 12px 28px;
-    
-    font-size: 1rem;
-    margin: 10px;
-
-  }
-  button:hover {
-    background-color: #682968;
-  }
-  button:disabled {
-    background-color: #eee;
-    color: #ccc;
-    cursor: auto;
-  }

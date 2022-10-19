@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { User } from '../core/models/user';
 import { MessageService } from './message.service';
 
 
 @Injectable({ providedIn: 'root' })
-export class HeroService {
+export class UserService {
 
   private usersUrl = 'http://onelity.azurewebsites.net/users';  // URL to web api
 
@@ -21,41 +20,26 @@ export class HeroService {
     private messageService: MessageService)
      { }
 
-  /** GET heroes from the server */
-  getHeroes(): Observable<User[]> {
+  /** GET original users from the server */
+  getorgusers(): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrl)
       .pipe(
         tap(_ => this.log('fetched users')),
-        catchError(this.handleError<User[]>('getHeroes', []))
+        catchError(this.handleError<User[]>('getorgusers', []))
       );
   }
-    /** GET heroes from the server */
+    /** GET Users from the server */
     getUsers(selectedoption: string, ascordesc:string, page: number, limit: number): Observable<User[]> {
       const url = `${this.usersUrl}/?_sort=${selectedoption}&_order=${ascordesc}&_page=${page}&_limit=${limit}`;
       return this.http.get<User[]>(url)
         .pipe(
           tap(_ => this.log('fetched users')),
-          catchError(this.handleError<User[]>('getHeroes', []))
+          catchError(this.handleError<User[]>('getorgusers', []))
         );
     }
 
-
-  /** GET hero by id.  Return `undefined` when id not found */
-  getHeroNo404<Data>(id: number): Observable<User> {
-    const url = `${this.usersUrl}/?id=${id}`;
-    return this.http.get<User[]>(url)
-      .pipe(
-        map(users => users[0]), // returns a {0|1} element array
-        tap(h => {
-          const outcome = h ? 'fetched' : 'did not find';
-          this.log(`${outcome} user id=${id}`);
-        }),
-        catchError(this.handleError<User>(`getHero id=${id}`))
-      );
-  }
-
-  /** GET hero by id. Will 404 if id not found */
-  getHero(id: number): Observable<User> {
+  /** GET user by id. Will 404 if id not found */
+  getUser(id: number): Observable<User> {
     const url = `${this.usersUrl}/${id}`;
     return this.http.get<User>(url).pipe(
       tap(_ => this.log(`fetched user id=${id}`)),
@@ -63,22 +47,8 @@ export class HeroService {
     );
   }
 
-  /* GET heroes whose first name contains search term */
-  searchHeroes(term: string): Observable<User[]> {
-    if (!term.trim()) {
-      // if not search term, return empty hero array.
-      return of([]);
-    }
-    return this.http.get<User[]>(`${this.usersUrl}/?firstName=${term}`).pipe(
-      tap(x => x.length ?
-         this.log(`found users matching "${term}"`) :
-         this.log(`no users matching "${term}"`)),
-      catchError(this.handleError<User[]>('searchHeroes', []))
-    );
-  }
-
-  /* GET heroes whose last name contains search term */
-  searchUsers(term: string, searchtype: any): Observable<User[]> {
+  /* GET users whose last name contains search term */
+  searchUsers(term: string, searchtype: string): Observable<User[]> {
     if (!term.trim()) {
       // if not search term, return empty hero array.
       return of([]);
@@ -93,32 +63,33 @@ export class HeroService {
 
   //////// Save methods //////////
 
-  /** POST: add a new hero to the server */
-  addHero(user: User): Observable<User> {
+  /** POST: add a new user to the server */
+  addUser(user: User): Observable<User> {
     return this.http.post<User>(this.usersUrl, user, this.httpOptions).pipe(
       tap((newUser: User) => this.log(`added user w/ id=${newUser.id}`)),
-      catchError(this.handleError<User>('addHero'))
+      catchError(this.handleError<User>('addUser'))
     );
   }
 
-  /** DELETE: delete the hero from the server */
-  deleteHero(id: number): Observable<User> {
+  /** DELETE: delete the user from the server */
+  deleteUser(id: number): Observable<User> {
     
     const url = `${this.usersUrl}/${id}`;
 
     return this.http.delete<User>(url, this.httpOptions).pipe(
       tap(_ => this.log(`deleted user id=${id}`)),
-      catchError(this.handleError<User>('deleteHero'))
+      catchError(this.handleError<User>('deleteUser'))
+      
     );
     
   }
 
-/** PUT: update the hero on the server */
-updateHero(user: User): Observable<any> {
+/** PUT: update the user on the server */
+updateUser(user: User): Observable<Object> {
   const url = `${this.usersUrl}/${user.id}`;
   return this.http.put(url, user, this.httpOptions).pipe(
     tap(_ => this.log(`updated user id=${user.id}`)),
-    catchError(this.handleError<any>('updateHero'))
+    catchError(this.handleError<User>('updateUser'))
   );
 }
 
@@ -130,7 +101,7 @@ updateHero(user: User): Observable<any> {
    * @param result - optional value to return as the observable result
    */
   private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
+    return (error: { message: string; }): Observable<T> => {
       alert(error.message)
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead

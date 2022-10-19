@@ -7,7 +7,8 @@ label {
   h1{
     margin-left:10px;
   }
-  button {
+  
+  button.button2 {
     padding: 14px 28px;
     border-radius: 4px;
     font-size: 1rem;
@@ -15,9 +16,9 @@ label {
     justify-content: center;
 
   }
-  button:hover {
+  button.button2:hover {
     background-color: #682968;
-  }
+  } 
   button:disabled {
     background-color: #eee;
     color: #ccc;

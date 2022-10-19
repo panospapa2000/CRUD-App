@@ -1,6 +1,8 @@
 <div class="container-fluid">
   <mat-toolbar color="primary">
     <a mat-stroked-button href=""><mat-icon>home</mat-icon></a> 
+    <button mat-stroked-button (click)="goBack()"><mat-icon>arrow_back</mat-icon></button>
+    <button mat-stroked-button (click)="goForward()"><mat-icon>arrow_forward</mat-icon></button> 
     <h1>Search Users</h1>
   </mat-toolbar>
 
@@ -9,7 +11,7 @@
     <label for="search-box">User Search</label> <br>
 <mat-form-field>
   <mat-label>Choose search parameter type</mat-label>
-  <select matNativeControl (change)="searchoption($event)">
+  <select id="value1" matNativeControl (change)="searchoption($event)">
     <option value="id">ID</option>
     <option value="firstName">First Name</option>
     <option value="lastName">Last Name</option>

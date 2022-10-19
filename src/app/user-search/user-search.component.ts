@@ -1,13 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component,OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { Observable, Subject } from 'rxjs';
 
-import {
-   debounceTime, distinctUntilChanged, switchMap
- } from 'rxjs/operators';
-
+import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import { User } from '../core/models/user';
-import { HeroService } from '../shared/hero.service';
+import { UserService } from '../shared/user.service';
  
 @Component({
   selector: 'app-user-search',
@@ -17,31 +14,40 @@ import { HeroService } from '../shared/hero.service';
 export class UserSearchComponent implements OnInit {
   users$!: Observable<User[]>;
   private searchTerms = new Subject<string>();
-  searchtype: any ='id'
+  searchtype: string ='id'
 
-  searchoption (event: any) {
-    //update the ui
-    this.searchtype = event.target.value;
-  }
 
-  constructor(private heroService: HeroService) {}
-
-  // Push a search term into the observable stream.
-  search(term: string): void {
-    this.searchTerms.next(term);
-   
-  }
+  constructor(private userService: UserService,   private location: Location) {}
 
   ngOnInit(): void { 
     this.users$ = this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering the term
       debounceTime(300),
-      
       // ignore new term if same as previous term
       distinctUntilChanged(),
-
       // switch to new search observable each time the term changes
-      switchMap((term: string) => this.heroService.searchUsers(term, this.searchtype)),
+      switchMap((term: string) => this.userService.searchUsers(term, this.searchtype)),
     );
+  }
+
+  searchoption (event: Event) {
+    this.searchtype = (event.target as HTMLInputElement).value;
+  }
+
+
+  search(term: string): void {
+    this.searchTerms.next(term);
+   
+  }
+
+  
+
+  goBack(): void {
+    this.location.back();
+  }
+  
+  
+  goForward(): void {
+    this.location.forward();
   }
 }

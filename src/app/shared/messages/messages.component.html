@@ -1,6 +1,8 @@
 <mat-toolbar color="primary">
         <a mat-stroked-button href=""><mat-icon>home</mat-icon></a> 
-        <h1>Logs</h1>
+        <button mat-stroked-button (click)="goBack()"><mat-icon>arrow_back</mat-icon></button>
+        <button mat-stroked-button (click)="goForward()"><mat-icon>arrow_forward</mat-icon></button> 
+       <h1>Add Users</h1> 
       </mat-toolbar>
 
 <div *ngIf="messageService.messages.length">

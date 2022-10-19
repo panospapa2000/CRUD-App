@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../core/models/user';
-import { HeroService } from '../shared/hero.service';
-
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -12,18 +11,19 @@ import { HeroService } from '../shared/hero.service';
 export class DashboardComponent implements OnInit {
   
   users: User[] = [];
-
-
-
-  constructor(private heroService: HeroService) { }
+  
+  constructor(private location: Location) { }
 
   ngOnInit(): void {
-    this.getHeroes();
   }
 
-  getHeroes(): void {
-    this.heroService.getHeroes()
-      .subscribe(users => this.users = users.slice(1, 5));
+  goBack(): void {
+    this.location.back();
+  }
+  
+  
+  goForward(): void {
+    this.location.forward();
   }
 
 }

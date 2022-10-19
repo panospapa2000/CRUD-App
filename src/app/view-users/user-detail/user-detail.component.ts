@@ -3,9 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Observable, Subscriber } from 'rxjs';
 import { User } from '../../core/models/user';
-import { HeroService } from '../../shared/hero.service';
+import { UserService } from '../../shared/user.service';
 import { Clipboard } from '@angular/cdk/clipboard';
-
 
 @Component({
   selector: 'app-user-detail',
@@ -15,46 +14,46 @@ import { Clipboard } from '@angular/cdk/clipboard';
 export class UserDetailComponent implements OnInit {
   
   user: User | undefined;
+  title = 'imgtobase64';
+  myimage!: Observable<ImageBitmap>;
+  base64code!: string
 
   constructor(
     private route: ActivatedRoute,
-    private heroService: HeroService,
+    private userService: UserService,
     private location: Location,
     private clipboard: Clipboard
   ) {}
 
   ngOnInit(): void {
-    this.getHero();
+    this.getUser();
   }
  
-  getHero(): void {
+  getUser(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.heroService.getHero(id)
+    this.userService.getUser(id)
       .subscribe(user => this.user = user);
   }
 
   goBack(): void {
     this.location.back();
   }
+  goForward(): void {
+    this.location.forward();
+  }
   save(): void {
     if (this.user) {
-      this.heroService.updateHero(this.user)
+      this.userService.updateUser(this.user)
         .subscribe(() => this.goBack());
     }
   }
 
   delete(user: User): void {
     if(confirm("Are you sure you want to delete user: "+ user.firstName + " " + user.lastName + "? "))
-    this.heroService.deleteHero(user.id).subscribe(() => this.goBack());
+    this.userService.deleteUser(user.id).subscribe(() => this.goBack());
+    
   } 
-
   
-
-
-  title = 'imgtobase64';
-  myimage!: Observable<any>;
-  base64code!: any
-
   onChange = ($event: Event) => {
     const target = $event.target as HTMLInputElement;
     const file: File = (target.files as FileList)[0];

@@ -1,9 +1,10 @@
 <div class="container-fluid">
   <mat-toolbar color="primary">
-     <a mat-stroked-button href=""><mat-icon>home</mat-icon></a> 
-    <h1>User Details</h1>
-  </mat-toolbar> <br>
-
+    <a mat-stroked-button href=""><mat-icon>home</mat-icon></a> 
+    <button mat-stroked-button (click)="goBack()"><mat-icon>arrow_back</mat-icon></button>
+    <button mat-stroked-button (click)="goForward()"><mat-icon>arrow_forward</mat-icon></button> 
+   <h1>User Details</h1> 
+  </mat-toolbar>
   
 
 <div *ngIf="user">
@@ -66,7 +67,7 @@
     <br>
     <label>Upload an image to convert to base64 format for usage above:</label><br>
     <input #ImageInput hidden="true" type="file" onclick="this.value=null" (change)="onChange($event)" accept="image/*"/>
-  <button mat-flat-button color="primary" (click)="ImageInput.click()">Choose Image File</button>
+  <button mat-flat-button class="button2" color="primary" (click)="ImageInput.click()">Choose Image File</button>
  
     <div *ngIf="myimage">
       <p>Image Preview:</p>
@@ -76,8 +77,8 @@
     </div> 
     <br>
     
-    <button mat-flat-button color="primary" (click)="goBack()">go back</button>     
-    <button mat-flat-button color="primary" [disabled]="firstname1.invalid || lastname1.invalid || email1.invalid || tel1.invalid || url1.invalid" (click)="save()">save</button>
-    <button mat-flat-button color="primary" class="delete" title="delete hero" (click)="delete(user)">delete</button>
+    <button mat-flat-button color="primary" class="button2" (click)="goBack()">go back</button>     
+    <button mat-flat-button color="primary" class="button2" [disabled]="firstname1.invalid || lastname1.invalid || email1.invalid || tel1.invalid || url1.invalid" (click)="save()">save</button>
+    <button mat-flat-button color="primary" class="button2" title="delete hero" (click)="delete(user)">delete</button>
 
   </div>

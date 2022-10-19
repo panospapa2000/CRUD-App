@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { User } from '../core/models/user';
-import { HeroService } from '../shared/hero.service';
+import { UserService } from '../shared/user.service';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { Observable, Subscriber } from 'rxjs';
 import { Location } from '@angular/common';
@@ -13,28 +12,28 @@ import { Location } from '@angular/common';
   styleUrls: ['./add-users.component.css']
 })
 export class AddUsersComponent implements OnInit {
-  users: User[] = [];
-  test: string="0"
+  users: User[] = [];  
+  title = 'imgtobase64';
+  myimage!: Observable<ImageData> | string ;
+  base64code!: string 
   
-  
-constructor(private heroService: HeroService,
-  private clipboard: Clipboard,
-  private location: Location) { }
+constructor(private userService: UserService, private clipboard: Clipboard, private location: Location) { }
+
 
   ngOnInit(): void {
   }
+
+  
   add(firstName: string,lastName: string,email: string,phone: string, image: string): void {
     firstName = firstName.trim();
     if (!firstName) { return; }
-    this.heroService.addHero({ firstName,lastName,email,phone,image } as User)
+    this.userService.addUser({ firstName,lastName,email,phone,image } as User)
       .subscribe(user => {
         this.users.push(user);
       });
   }
 
-  title = 'imgtobase64';
-  myimage!: Observable<any>;
-  base64code!: any
+
 
   onChange = ($event: Event) => {
     const target = $event.target as HTMLInputElement;
@@ -44,7 +43,7 @@ constructor(private heroService: HeroService,
   };
 
   convertToBase64(file: File) {
-    const observable = new Observable((subscriber: Subscriber<any>) => {
+    const observable = new Observable((subscriber: Subscriber<string>) => {
       this.readFile(file, subscriber);
     });
 
@@ -55,7 +54,7 @@ constructor(private heroService: HeroService,
     })
   }
 
-  readFile(file: File, subscriber: Subscriber<any>) {
+  readFile(file: File, subscriber: Subscriber<string | ArrayBuffer | null>) {
     const filereader = new FileReader();
     filereader.readAsDataURL(file);
 
@@ -75,5 +74,9 @@ constructor(private heroService: HeroService,
 goBack(): void {
   this.location.back();
 }
-}
 
+
+goForward(): void {
+  this.location.forward();
+}
+}

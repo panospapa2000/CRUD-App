@@ -7,6 +7,8 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateComponent } from '../update/update.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DialogService } from '../dialog.service';
 
 @Component({
   selector: 'app-view',
@@ -21,7 +23,8 @@ export class ViewComponent implements OnInit {
   dataSource: MatTableDataSource<UserModel> = new MatTableDataSource();
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'phone', 'image', 'update', 'delete'];
 
-  constructor(private userService: UserService, private _liveAnnouncer: LiveAnnouncer, private dialog: MatDialog) { }
+  constructor(private userService: UserService, private _liveAnnouncer: LiveAnnouncer,
+    private dialog: MatDialog, private snackBar: MatSnackBar, private dialogService: DialogService) { }
 
   ngOnInit(): void {
     this.getUsersFunction();
@@ -53,17 +56,20 @@ export class ViewComponent implements OnInit {
     this.dialog.open(UpdateComponent, {
       width: '250px', height: '700px', enterAnimationDuration: '1000ms', exitAnimationDuration: '1000ms', data: element
     }).afterClosed().subscribe(result => {
-      const index = this.dataSource.data.findIndex( data => data.id === result.id);
+      const index = this.dataSource.data.findIndex(data => data.id === result.id);
       this.dataSource.data[index] = result;
       this.dataSource.data = [...this.dataSource.data];
     });
   }
 
   deleteUserFunction(id: number) {
-    if (confirm("Are you sure you want to delete this user with ID " + id + "?")) {
-      this.userService.deleteUser(id).subscribe(() => {
-        this.dataSource.data = this.dataSource.data.filter((u: UserModel) => u.id !== id);
-      })
-    }
+    this.dialogService.openConfirmDialog('Proceed with the user(ID:' + id +') deletion?').afterClosed().subscribe(result => {
+      if (result) {
+        this.userService.deleteUser(id).subscribe(() => {
+          this.dataSource.data = this.dataSource.data.filter((u: UserModel) => u.id !== id);
+          this.snackBar.open("This user with has been successfully deleted!!!", "Okay", { verticalPosition: 'top', duration: 3000 })
+        })
+      }
+    })
   }
 }

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserModel } from '../Model/userModel';
 import { UserService } from '../user.service';
 
@@ -36,7 +37,8 @@ export class UpdateComponent implements OnInit {
   }
 
 
-  constructor(private userService: UserService, @Inject(MAT_DIALOG_DATA) public data: UserModel, private dialogRef: MatDialogRef<UpdateComponent>) {
+  constructor(private userService: UserService, @Inject(MAT_DIALOG_DATA) public data: UserModel, 
+              private dialogRef: MatDialogRef<UpdateComponent>, private snackBar: MatSnackBar) {
     this.initializeForm(data);
     this.changeForm(data.id);
   }
@@ -64,6 +66,7 @@ export class UpdateComponent implements OnInit {
       this.userService.updateUser(this.updateForm.getRawValue(), this.data.id).subscribe(item => {
         this.saveData = item;
         this.dialogRef.close(this.saveData);
+        this.snackBar.open("This user with has been successfully updated!!!", "Okay", {verticalPosition: 'top', duration: 3000})
       })
     }
   }
@@ -71,7 +74,7 @@ export class UpdateComponent implements OnInit {
   onFileSelected(event: any) {
     let file: File = event.target.files[0];
     if (!this.imageValidator(file.name)) {
-      window.alert("Selected file format is not supported. Please select a file with .png, .jpg or .jpeg extension.");
+      this.snackBar.open("Selected file format is not supported. Please select a file with .png, .jpg or .jpeg extension.", "Retry", {duration: 5000});
     }
     else {
       let reader = new FileReader();

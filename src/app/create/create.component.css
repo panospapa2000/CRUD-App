@@ -1,7 +1,8 @@
 .createUserForm {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    /* align-items: flex-start; */
 }
 
 .mat-card-title {
@@ -11,8 +12,9 @@
 .mat-card {
     background: rgba(160, 157, 157, 0.305)
 }
+
 .file-upload{
-    color:#7004a2;
+    color:blueviolet;
 }
 
 .file-input {

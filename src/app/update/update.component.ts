@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DialogService } from '../dialog.service';
 import { UserModel } from '../Model/userModel';
 import { UserService } from '../user.service';
 
@@ -37,14 +38,14 @@ export class UpdateComponent implements OnInit {
   }
 
 
-  constructor(private userService: UserService, @Inject(MAT_DIALOG_DATA) public data: UserModel, 
-              private dialogRef: MatDialogRef<UpdateComponent>, private snackBar: MatSnackBar) {
+  constructor(private userService: UserService, @Inject(MAT_DIALOG_DATA) public data: UserModel,
+    private dialogRef: MatDialogRef<UpdateComponent>, private snackBar: MatSnackBar, private dialogService: DialogService) {
     this.initializeForm(data);
     this.changeForm(data.id);
   }
 
   ngOnInit(): void {
-    
+
   }
 
   changeForm(id: number) {
@@ -62,11 +63,16 @@ export class UpdateComponent implements OnInit {
   }
 
   applyUpdates() {
-    if (this.updateForm.valid && (confirm("Are you sure you want to update this user?"))) {
-      this.userService.updateUser(this.updateForm.getRawValue(), this.data.id).subscribe(item => {
-        this.saveData = item;
-        this.dialogRef.close(this.saveData);
-        this.snackBar.open("This user with has been successfully updated!!!", "Okay", {verticalPosition: 'top', duration: 3000})
+    if (this.updateForm.valid) {
+      this.dialogService.openConfirmDialog('Proceed with the user update?').afterClosed().subscribe(result => {
+        if (result) {
+          this.userService.updateUser(this.updateForm.getRawValue(), this.data.id).subscribe(item => {
+            this.saveData = item;
+            this.dialogRef.close(this.saveData);
+            this.snackBar.open("This user has been successfully updated!!!", "Okay", { verticalPosition: 'top', duration: 3000 })
+          }
+          )
+        }
       })
     }
   }
@@ -74,7 +80,7 @@ export class UpdateComponent implements OnInit {
   onFileSelected(event: any) {
     let file: File = event.target.files[0];
     if (!this.imageValidator(file.name)) {
-      this.snackBar.open("Selected file format is not supported. Please select a file with .png, .jpg or .jpeg extension.", "Retry", {duration: 5000});
+      this.snackBar.open("Selected file format is not supported. Please select a file with .png, .jpg or .jpeg extension.", "Retry", { duration: 5000 });
     }
     else {
       let reader = new FileReader();
@@ -93,19 +99,19 @@ export class UpdateComponent implements OnInit {
     else { return false; }
   }
 
-  get firstName(){
+  get firstName() {
     return this.updateForm.get('firstName');
   }
 
-  get lastName(){
+  get lastName() {
     return this.updateForm.get('lastName');
   }
 
-  get email(){
+  get email() {
     return this.updateForm.get('email');
   }
 
-  get phone(){
+  get phone() {
     return this.updateForm.get('phone');
   }
 }

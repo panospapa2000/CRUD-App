@@ -67,7 +67,7 @@ export class ViewComponent implements OnInit {
       if (result) {
         this.userService.deleteUser(id).subscribe(() => {
           this.dataSource.data = this.dataSource.data.filter((u: UserModel) => u.id !== id);
-          this.snackBar.open("This user with has been successfully deleted!!!", "Okay", { verticalPosition: 'top', duration: 3000 })
+          this.snackBar.open("This user has been successfully deleted!!!", "Okay", { verticalPosition: 'top', duration: 3000 })
         })
       }
     })

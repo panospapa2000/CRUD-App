@@ -1,13 +1,18 @@
-h2{
+h1{
     text-align: center;
     background-color: rgb(98, 18, 210);
-    color: white;
+    color: black;
 }
 
 .updateForm {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    color:rgb(98, 18, 210);
+}
+
+.file-upload{
+    color:rgb(98, 18, 210);
 }
 
 .file-input {

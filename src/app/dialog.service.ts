@@ -12,7 +12,9 @@ export class DialogService {
   openConfirmDialog(msg: string)
   {
     return this.dialog.open(MatConfirmDialogComponent, {
-      width: '390px',
+      enterAnimationDuration: '700ms',
+      exitAnimationDuration: '700ms',
+      width: '400px',
       panelClass: 'confirm-dialog-container',
       disableClose: true,
       data: {

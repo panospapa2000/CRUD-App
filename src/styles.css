@@ -9,7 +9,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .confirm-dialog-container .content-container{
     margin: 5px 5px 15px 15px;
-    color: rgb(200, 27, 11);
+    color: black;
     display: flex;
     font-weight: bolder;
 }

@@ -5,11 +5,11 @@
 }
 
 .mat-card-title {
-    color: #7004a2;
+    color: blueviolet;
 }
 
 .mat-card {
-    background: rgb(230, 207, 5);
+    background: rgba(160, 157, 157, 0.305)
 }
 .file-upload{
     color:#7004a2;

@@ -51,7 +51,7 @@ export class ViewComponent implements OnInit {
 
   updateUserFunction(element: UserModel) {
     this.dialog.open(UpdateComponent, {
-      width: '250px', height: '600px', enterAnimationDuration: '1000ms', exitAnimationDuration: '1000ms', data: element
+      width: '250px', height: '700px', enterAnimationDuration: '1000ms', exitAnimationDuration: '1000ms', data: element
     }).afterClosed().subscribe(result => {
       const index = this.dataSource.data.findIndex( data => data.id === result.id);
       this.dataSource.data[index] = result;

@@ -12,8 +12,8 @@ import { UserService } from '../user.service';
 
 export class UpdateComponent implements OnInit {
 
-  public editData: any;
-  public saveData: any;
+  editData: any;
+  public saveData: UserModel[] = [];
 
   updateForm: FormGroup = new FormGroup({
     id: new FormControl({ value: '', disabled: true }),

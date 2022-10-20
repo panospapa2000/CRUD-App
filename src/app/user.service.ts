@@ -16,16 +16,16 @@ export class UserService {
     return this.http.get<UserModel[]>(this.apiurl);
   }
 
-  getUsersbyId(userId: number){
-    return this.http.get(this.apiurl + '/' + userId);
+  getUsersbyId(userId: number): Observable<UserModel[]>{
+    return this.http.get<UserModel[]>(this.apiurl + '/' + userId);
   }
 
-  createUser(inputdata: UserModel){
-    return this.http.post(this.apiurl, inputdata);
+  createUser(inputdata: UserModel): Observable<UserModel[]>{
+    return this.http.post<UserModel[]>(this.apiurl, inputdata);
   }
 
-  updateUser(inputdata: UserModel, UserID: number){
-    return this.http.put(this.apiurl + '/' + UserID, inputdata);
+  updateUser(inputdata: UserModel, userId: number): Observable<UserModel[]>{
+    return this.http.put<UserModel[]>(this.apiurl + '/' + userId, inputdata);
   }
 
   deleteUser(userId: number){

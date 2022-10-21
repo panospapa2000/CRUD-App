@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { UserModel } from '../Model/userModel';
-import { UserService } from '../user.service';
+import { UserModel } from '../../core/Model/userModel';
+import { UserService } from '../../core/services/user.service';
 
 @Component({
   selector: 'app-create',

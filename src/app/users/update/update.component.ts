@@ -2,9 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DialogService } from '../dialog.service';
-import { UserModel } from '../Model/userModel';
-import { UserService } from '../user.service';
+import { DialogService } from '../../core/services/mat-dialog.service';
+import { UserModel } from '../../core/Model/userModel';
+import { UserService } from '../../core/services/user.service';
 
 @Component({
   selector: 'app-update',
@@ -13,7 +13,7 @@ import { UserService } from '../user.service';
 })
 
 export class UpdateComponent implements OnInit {
-  
+
   public saveData: UserModel[] = [];
 
   updateForm: FormGroup = new FormGroup({
@@ -40,26 +40,11 @@ export class UpdateComponent implements OnInit {
   constructor(private userService: UserService, @Inject(MAT_DIALOG_DATA) public data: UserModel,
     private dialogRef: MatDialogRef<UpdateComponent>, private snackBar: MatSnackBar, private dialogService: DialogService) {
     this.initializeForm(data);
-    // this.changeForm(data);
   }
 
   ngOnInit(): void {
 
   }
-
-  // changeForm(data: UserModel) {
-  //   this.userService.getUsers().subscribe(item => {
-  //     this.editData = item;
-  //     this.updateForm.setValue({
-  //       id: this.editData[data.id],
-  //       // firstName: this.editData[data.firstName],
-  //       // lastName: this.editData.lastName,
-  //       // email: this.editData.email,
-  //       // phone: this.editData.phone,
-  //       // image: this.editData.image
-  //     })
-  //   })
-  // }
 
   applyUpdates() {
     if (this.updateForm.valid) {

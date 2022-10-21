@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { UserModel } from '../Model/userModel';
-import { UserService } from '../user.service';
+import { UserModel } from '../../core/Model/userModel';
+import { UserService } from '../../core/services/user.service';
 import { MatSort, Sort } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateComponent } from '../update/update.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DialogService } from '../dialog.service';
+import { DialogService } from '../../core/services/mat-dialog.service';
 
 @Component({
   selector: 'app-view',

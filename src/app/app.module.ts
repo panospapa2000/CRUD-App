@@ -4,10 +4,9 @@ import { MatTableModule } from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { ViewComponent } from './view/view.component';
-import { CreateComponent } from './create/create.component';
-import { UpdateComponent } from './update/update.component';
-import { DeleteComponent } from './delete/delete.component';
+import { ViewComponent } from './users/view/view.component';
+import { CreateComponent } from './users/create/create.component';
+import { UpdateComponent } from './users/update/update.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
@@ -30,7 +29,6 @@ import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dial
     ViewComponent,
     CreateComponent,
     UpdateComponent,
-    DeleteComponent,
     MatConfirmDialogComponent,
   ],
   imports: [

@@ -47,8 +47,8 @@
         <mat-form-field hintLabel="Enter URL of image" appearance="fill">
             <mat-label>Image URL</mat-label>
             <input matInput formControlName="image">
+            <mat-error>Insert image URL/Upload image</mat-error>
         </mat-form-field>
-
         <mat-card>
             <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload formControlName="image">
         <div class="file-upload">
@@ -59,6 +59,7 @@
         </div>
         </mat-card>
         <br>
+        
         <button [disabled]="updateForm.invalid" mat-raised-button (click)="applyUpdates()"
             color="primary">Apply</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button mat-raised-button mat-dialog-close color="warn">Close</button>

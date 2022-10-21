@@ -13,8 +13,7 @@ import { UserService } from '../user.service';
 })
 
 export class UpdateComponent implements OnInit {
-
-  editData: any;
+  
   public saveData: UserModel[] = [];
 
   updateForm: FormGroup = new FormGroup({
@@ -41,26 +40,26 @@ export class UpdateComponent implements OnInit {
   constructor(private userService: UserService, @Inject(MAT_DIALOG_DATA) public data: UserModel,
     private dialogRef: MatDialogRef<UpdateComponent>, private snackBar: MatSnackBar, private dialogService: DialogService) {
     this.initializeForm(data);
-    this.changeForm(data.id);
+    // this.changeForm(data);
   }
 
   ngOnInit(): void {
 
   }
 
-  changeForm(id: number) {
-    this.userService.getUsersbyId(id).subscribe(item => {
-      this.editData = item;
-      this.updateForm.setValue({
-        id: this.editData.id,
-        firstName: this.editData.firstName,
-        lastName: this.editData.lastName,
-        email: this.editData.email,
-        phone: this.editData.phone,
-        image: this.editData.image
-      })
-    })
-  }
+  // changeForm(data: UserModel) {
+  //   this.userService.getUsers().subscribe(item => {
+  //     this.editData = item;
+  //     this.updateForm.setValue({
+  //       id: this.editData[data.id],
+  //       // firstName: this.editData[data.firstName],
+  //       // lastName: this.editData.lastName,
+  //       // email: this.editData.email,
+  //       // phone: this.editData.phone,
+  //       // image: this.editData.image
+  //     })
+  //   })
+  // }
 
   applyUpdates() {
     if (this.updateForm.valid) {
@@ -90,7 +89,7 @@ export class UpdateComponent implements OnInit {
       };
     }
   }
-
+  //Added custom validator for supporting specific files
   imageValidator(name: string) {
     var extension = name.substring(name.lastIndexOf('.') + 1);
     if (extension.toLowerCase() == 'png' || extension.toLowerCase() == 'jpg' || extension.toLowerCase() == 'jpeg') {

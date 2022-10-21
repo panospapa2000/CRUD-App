@@ -29,33 +29,17 @@ export class CreateComponent implements OnInit {
 
   }
 
-  get firstName() {
-    return this.creationForm.get('firstName');
-  }
-
-  get lastName() {
-    return this.creationForm.get('lastName');
-  }
-
-  get email() {
-    return this.creationForm.get('email');
-  }
-
-  get phone() {
-    return this.creationForm.get('phone');
-  }
-
   createUserFunction() {
     this.userService.createUser(this.creationForm.getRawValue()).subscribe(item => {
       this.createData = item;
-      this.snackBar.open("This user has been successfully created!!!", "Okay", {verticalPosition: 'bottom'});
+      this.snackBar.open("This user has been successfully created!!!", "Okay", { verticalPosition: 'bottom' });
     })
   }
 
   onFileSelected(event: any) {
     let file: File = event.target.files[0];
     if (!this.imageValidator(file.name)) {
-      this.snackBar.open("Selected file format is not supported. Please select a file with .png, .jpg or .jpeg extension.", "Retry", {duration: 5000});
+      this.snackBar.open("Selected file format is not supported. Please select a file with .png, .jpg or .jpeg extension.", "Retry", { duration: 5000 });
     }
     else {
       let reader = new FileReader();
@@ -76,5 +60,21 @@ export class CreateComponent implements OnInit {
 
   goBack() {
     this.routing.navigate(['view']);
+  }
+
+  get firstName() {
+    return this.creationForm.get('firstName');
+  }
+
+  get lastName() {
+    return this.creationForm.get('lastName');
+  }
+
+  get email() {
+    return this.creationForm.get('email');
+  }
+
+  get phone() {
+    return this.creationForm.get('phone');
   }
 }

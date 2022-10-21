@@ -44,12 +44,11 @@
                 <mat-error *ngIf="phone?.errors?.['pattern']">Not a valid phone</mat-error>
             </div>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field hintLabel="Enter URL of image" appearance="fill">
                 <mat-label>Image URL</mat-label>
                 <input matInput formControlName="image">
-                <mat-error>Please insert image URL or upload an image</mat-error>
+                <mat-error>Insert image URL or upload image file</mat-error>
             </mat-form-field>
-            <br>
             <mat-card>
                 <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload formControlName="image">
             <div class="file-upload">

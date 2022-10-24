@@ -4,7 +4,9 @@ h1{
   }
   
 button.button2 {
-    padding: 14px 28px;
+    padding: 20px;
+    width: 200px;
+
     border-radius: 4px;
     font-size: 1rem;
     margin: 10px;
@@ -36,3 +38,12 @@ button.button2:hover {
     align-items: center;
     margin-left: 10px;
   }
+
+  img {
+    border-radius: 50%;
+    border: 2px solid black;
+  padding: 5px;
+  width: 120px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  } 

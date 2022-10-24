@@ -39,7 +39,7 @@
    <mat-error>Valid link/base64 is required</mat-error>
     </mat-form-field> <br>
 
-  <label>Upload an image to convert it to base64 format for usage above:</label><br>
+  <label>Upload an image:</label><br>
   <input #ImageInput hidden="true" type="file" onclick="this.value=null" (change)="onChange($event)" accept="image/*"/>
   <button class="button2" mat-flat-button color="primary" (click)="ImageInput.click()">Choose Image File</button>
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../core/models/user';
 import { UserService } from '../shared/user.service';
 import { Location } from '@angular/common';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class ViewUsersComponent implements OnInit {
   usersorg: User[] = [];
   col: string = "1"
 
-  constructor(private userService: UserService, private location: Location) { }
+  constructor(private userService: UserService, private location: Location,private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
 
@@ -66,6 +66,7 @@ export class ViewUsersComponent implements OnInit {
       this.getorgusers();
       if (!(user.id in this.usersorg)){
       this.users = this.users.filter(h => h !== user);
+      this._snackBar.open("User has been deleted successfully!", "Close");
       }
     }
 

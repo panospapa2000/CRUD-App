@@ -5,6 +5,8 @@ import { Observable, Subscriber } from 'rxjs';
 import { User } from '../../core/models/user';
 import { UserService } from '../../shared/user.service';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-user-detail',
@@ -22,7 +24,8 @@ export class UserDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private userService: UserService,
     private location: Location,
-    private clipboard: Clipboard
+    private clipboard: Clipboard,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -47,12 +50,6 @@ export class UserDetailComponent implements OnInit {
         .subscribe(() => this.goBack());
     }
   }
-
-  delete(user: User): void {
-    if(confirm("Are you sure you want to delete user: "+ user.firstName + " " + user.lastName + "? "))
-    this.userService.deleteUser(user.id).subscribe(() => this.goBack());
-    
-  } 
   
   onChange = ($event: Event) => {
     const target = $event.target as HTMLInputElement;

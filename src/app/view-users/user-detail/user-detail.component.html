@@ -65,7 +65,7 @@
     </div>
     
     <br>
-    <label>Upload an image to convert to base64 format for usage above:</label><br>
+    <label>Upload an image:</label><br>
     <input #ImageInput hidden="true" type="file" onclick="this.value=null" (change)="onChange($event)" accept="image/*"/>
   <button mat-flat-button class="button2" color="primary" (click)="ImageInput.click()">Choose Image File</button>
  
@@ -75,10 +75,6 @@
       <button mat-flat-button color="primary" (click)="user.image=base64code">Use the above image</button>
 
     </div> 
-    <br>
-    
-    <button mat-flat-button color="primary" class="button2" (click)="goBack()">go back</button>     
-    <button mat-flat-button color="primary" class="button2" [disabled]="firstname1.invalid || lastname1.invalid || email1.invalid || tel1.invalid || url1.invalid" (click)="save()">save</button>
-    <button mat-flat-button color="primary" class="button2" title="delete user" (click)="delete(user)">delete</button>
-
+    <br>     
+    <button mat-flat-button color="primary" class="button2" [disabled]="firstname1.invalid || lastname1.invalid || email1.invalid || tel1.invalid || url1.invalid" (click)="save()">Update User</button>
   </div>

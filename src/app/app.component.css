@@ -24,3 +24,12 @@
 .btn-group button:hover {
   background-color: #682968;
 }
+
+.example-container {
+
+background-color:rgb(209, 241, 241);
+}
+
+.drawer {
+  background-color: #0088cc;
+}

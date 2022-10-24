@@ -19,17 +19,18 @@ img {
   border-style: double;
 }
 
-th.mat-sort-header-sorting {
-  color: white;
-}
-
 .mat-raised-button{
-  color:black;
+  color:rgb(0, 0, 0);
 }
 
 .filterInput{
-  box-shadow: 0 05px 20px 0 rgb(128, 22, 152);
-  color: blueviolet;
+  box-shadow: 0 10px 20px 0 rgb(128, 22, 152);
+  color: rgb(132, 0, 255);
   border: blueviolet solid 2px;
-  border-radius: 10em;
+  border-radius: 1em;
+}
+
+.filterInput::placeholder{
+  color: blueviolet;
+  background: linear-gradient(to right, white, rgb(144, 84, 199))
 }

@@ -2,20 +2,27 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    /* align-items: flex-start; */
 }
 
 .mat-card-title {
-    color: blueviolet;
+    color: rgb(0, 0, 0);
     text-align: center;
+    border: 5px solid;
+    border-radius: 20em;
 }
 
 .mat-card {
-    background: rgba(160, 157, 157, 0.305)
+    background: linear-gradient(to bottom, rgb(205, 205, 205),rgb(117, 115, 117));
+    color: rgb(0, 0, 0);
+}
+
+.upload-btn{
+    color: black;
+    background-color: aliceblue;
 }
 
 .file-upload{
-    color:blueviolet;
+    color: black;
 }
 
 .file-input {

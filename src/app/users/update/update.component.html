@@ -1,4 +1,4 @@
-<h1>Update User</h1>
+<h1 class="title">Update User</h1>
 <div class="updateForm">
     <form [formGroup]='updateForm'>
         <mat-form-field appearance="fill">
@@ -49,10 +49,10 @@
             <input matInput formControlName="image">
             <mat-error>Insert image URL/Upload image</mat-error>
         </mat-form-field>
-        <mat-card>
+        <mat-card class="imageUpload">
             <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload formControlName="image">
         <div class="file-upload">
-            {{"Click to upload an image"}}
+            {{"click to upload an image"}}
             <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
                 <mat-icon>attach_file</mat-icon>
             </button>

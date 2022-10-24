@@ -1,7 +1,9 @@
-h1{
+.title{
     text-align: center;
     background-color: rgb(98, 18, 210);
     color: black;
+    border-radius: 10em;
+    border: solid 2px;
 }
 
 .updateForm {
@@ -11,10 +13,18 @@ h1{
     color:rgb(98, 18, 210);
 }
 
+.imageUpload{
+    background-color: rgb(98, 18, 210);
+}
+
 .file-upload{
     color:rgb(98, 18, 210);
+    background-color: rgb(238, 66, 66);
+    border-radius: 10em;
+    text-align: center;
 }
 
 .file-input {
     display: none;
-  }
+}
+

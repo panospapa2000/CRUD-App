@@ -49,7 +49,7 @@ export class ViewComponent implements OnInit {
 
   filterBar(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   updateUserFunction(element: UserModel) {

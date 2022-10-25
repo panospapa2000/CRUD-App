@@ -8,6 +8,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { UserService } from '../core/services/user.service';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { UpdateComponent } from './update/update.component';
+import { AddToTableService} from 'src/app/core/services/add-to-table.service';
+import { Subscription } from 'rxjs';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
+
 
 
 @Component({
@@ -23,8 +27,8 @@ export class UsersComponent implements OnInit {
   userData: User[]=[];
   dataSource: MatTableDataSource<User>= new MatTableDataSource();
 
-
-  constructor(private userService: UserService,public dialog:MatDialog) { }
+  constructor(private userService: UserService,public dialog:MatDialog,private addToTableService: AddToTableService) { 
+  }
 
   ngOnInit(): void {
     this.getUsers();
@@ -45,19 +49,32 @@ export class UsersComponent implements OnInit {
   }
 
 
+
   deleteUser(user:User):void {
     console.log(user);
-    this.userData = this.userData.filter(u=> u !==user);
-    this.userService.deleteUser(user.id).subscribe(item=>{this.getUsers});
+    this.userService.deleteUser(user.id).subscribe(
+      {next:(res)=>{
+        this.dataSource.data=this.dataSource.data.filter(u=> u !==user);
+        alert("User deleted successfully!");},
+    error:()=>{alert("Error while deleting user!");}
+  });
 
   }
 
   openUpdateDialog(element :any) {
     this.dialog.open(UpdateComponent, {
           width:'30%',
-          data:element
+          data:element,
+    }).afterClosed().subscribe(item=>{
+      // console.log(item);
+     const foundIndex=this.dataSource.data.findIndex(x=>item.id===element.id);
+      this.dataSource.data[foundIndex]=item;
+      this.dataSource.data = [...this.dataSource.data];
+
     });
   }
+
+  
 }
 
   

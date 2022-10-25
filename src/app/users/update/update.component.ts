@@ -61,8 +61,8 @@ export class UpdateComponent implements OnInit {
     this.userService.updateUser(this.userForm.value,this.editData.id).subscribe({
       next:(res)=>{
         alert("User updated successfully!");
-        this.userForm.reset();
-        this.dialogRef.close('update');
+        // this.userForm.reset();
+        this.dialogRef.close(this.userForm.value);
       },
       error:()=>{
         alert("Error while updating user");

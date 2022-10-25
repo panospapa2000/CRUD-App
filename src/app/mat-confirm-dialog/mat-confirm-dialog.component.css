@@ -41,3 +41,7 @@ span.content-span{
     text-align: center;
     font-size: 20px;
 }
+
+.mat-raised-button{
+    margin: 17.6px;
+}

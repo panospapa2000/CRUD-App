@@ -1,45 +1,11 @@
-<style>
-  .toolbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    background-color: #1976d2;
-    color: white;
-    font-weight: 600;
-  }
-
-  .toolbar img {
-    margin: 0 20px;
-  }
-
-  .content {
-    display: flex;
-    margin: 82px auto 36px;
-    padding: 0 16px;
-    max-width: 960px;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  a,
-  a:visited,
-  a:hover {
-    color: black;
-    text-decoration: none;
-  }
-</style>
-
 <!-- Toolbar -->
 <div class="toolbar">
   <img width="40" alt="Angular Logo"
     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
-  <button mat-raised-button color="warn"><a routerLink="home">Home</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <button mat-raised-button color="primary"><a routerLink="view">List of users</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <button mat-raised-button color="basic"><a routerLink="create">Create a user</a></button>
+  <button mat-raised-button color="basic"><a routerLink="home">Home</a></button>
+  <button class="list" mat-raised-button><a routerLink="view">List of users</a></button>
+  <button class="create" mat-raised-button><a routerLink="create">Create a user</a></button>
+  <h1>USER MANAGEMENT SYSTEM</h1>
 </div>
 
 <div class="content" role="main">

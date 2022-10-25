@@ -51,17 +51,15 @@
         </mat-form-field>
         <mat-card class="imageUpload">
             <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
-        <div class="file-upload">
-            {{"click to upload an image"}}
-            <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
-                <mat-icon>attach_file</mat-icon>
-            </button>
-        </div>
+            <div class="file-upload">
+                {{"click to upload an image"}}
+                <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+                    <mat-icon>attach_file</mat-icon>
+                </button>
+            </div>
         </mat-card>
         <br>
-        
-        <button [disabled]="updateForm.invalid" mat-raised-button (click)="applyUpdates()"
-            color="primary">Apply</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button [disabled]="updateForm.invalid" color="primary" mat-raised-button (click)="applyUpdates()">Apply</button>
         <button mat-raised-button mat-dialog-close color="warn">Close</button>
     </form>
 </div>

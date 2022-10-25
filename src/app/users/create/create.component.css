@@ -5,8 +5,8 @@
 
 .create .overlay{
     position: absolute;
-    top: 130px;
-    right: 600px;
+    top: 15%;
+    left: 40%;
 }
 
 .createUserForm {
@@ -38,4 +38,9 @@
 
 .file-input {
     display: none;
+}
+
+.createButton{
+    background-color: rgb(0, 0, 0);
+    color: white;
 }

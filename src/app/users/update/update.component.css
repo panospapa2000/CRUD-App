@@ -28,3 +28,7 @@
     display: none;
 }
 
+.mat-raised-button{
+    margin: 16.5px;
+    color: black;
+}

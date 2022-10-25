@@ -1,8 +1,8 @@
 <!--Angular Material Table-->
 <div style="width:1500px" class="mat-elevation-z8">
-    <mat-form-field>
-        <mat-label class>Click to search for a user</mat-label>
-        <input class="filterInput" matInput placeholder="Search" (keyup)="filterBar($event)">
+    <mat-form-field style="color: black">
+        <mat-label style="color: black"><mat-icon>search</mat-icon>Click to search for a user</mat-label>
+        <input class="filterInput" matInput placeholder="" (keyup)="filterBar($event)">
     </mat-form-field>
     <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
 
@@ -49,7 +49,7 @@
         <ng-container matColumnDef="update">
             <th mat-header-cell *matHeaderCellDef> Update User </th>
             <td mat-cell *matCellDef="let element">
-                <button mat-raised-button color="primary" (click)="updateUserFunction(element)">Update</button>
+                <button mat-raised-button color="primary" (click)="updateUserFunction(element)"><mat-icon>edit</mat-icon></button>
             </td>
         </ng-container>
 
@@ -57,7 +57,7 @@
         <ng-container matColumnDef="delete">
             <th mat-header-cell *matHeaderCellDef> Delete User </th>
             <td mat-cell *matCellDef="let element">
-                <button mat-raised-button color="warn" (click)="deleteUserFunction(element.id)">Delete</button>
+                <button mat-raised-button color="warn" (click)="deleteUserFunction(element.id)"><mat-icon>delete</mat-icon></button>
             </td>
         </ng-container>
 

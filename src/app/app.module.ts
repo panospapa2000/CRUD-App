@@ -27,7 +27,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 @NgModule({
   declarations: [
@@ -59,7 +60,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatCardModule,
     MatIconModule,
     MatSnackBarModule,
-    MatGridListModule
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

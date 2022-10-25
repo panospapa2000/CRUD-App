@@ -18,25 +18,25 @@
   <mat-icon>person</mat-icon><mat-form-field class="example-form-field" appearance="outline">
     <mat-label>Last Name</mat-label>
     <input matInput type="text" placeholder="Doe" id="lastname" ngModel name="lastname1" #lastname1="ngModel" pattern="[A-Za-z]{2,50}" #lastname required />
-  <mat-error>Valid last name is required</mat-error>
+  <mat-error>Valid Last Name is required</mat-error>
   </mat-form-field> <br>
 
   <mat-icon> email</mat-icon><mat-form-field class="example-form-field" appearance="outline">
     <mat-label>Email</mat-label>
     <input  matInput type="text" placeholder="email@email.com" ngModel name="email1" #email1="ngModel" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{1,}([.][a-zA-Z]{1,}|[.][\w-]{1,}[.][a-zA-Z]{1,})$" id="new-user" #email required/>
-  <mat-error>Valid email is required</mat-error>
+  <mat-error>Valid Email is required</mat-error>
   </mat-form-field> <br>
 
   <mat-icon> phone</mat-icon><mat-form-field class="example-form-field" appearance="outline">
     <mat-label>Phone</mat-label>
     <input matInput type="tel" placeholder="+123 456 789 012" id="tel" ngModel name="tel" #tel="ngModel"  pattern="[+][0-9 ]+" #phone required />
- <mat-error>Valid phone number is required</mat-error>
+ <mat-error>Valid Phone Number is required</mat-error>
   </mat-form-field><br>
 
   <mat-icon>link</mat-icon> <mat-form-field class="example-form-field" appearance="outline">
       <mat-label>Image url/base64</mat-label>
       <input matInput type="url" placeholder="http://site.com/image.png" ngModel name="url" id="url" #url="ngModel" pattern="(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif))|(^data:image.*)" #image required/>
-   <mat-error>Valid link/base64 is required</mat-error>
+   <mat-error>Valid Link/Base64 is required</mat-error>
     </mat-form-field> <br>
 
   <label>Upload an image:</label><br>
@@ -45,10 +45,10 @@
 
   <br>
   <div *ngIf="myimage">
-    <p>Image Preview:</p>
+    <h1>Image Preview:</h1>
     <img [src]="myimage" width="200px" height="100px" alt="" /> <br>
     <button class="button2" mat-flat-button color="primary" (click)="image.value=base64code">Use the image above</button>
-
+    <button class="button2" mat-flat-button color="primary" (click)="myimage=''">Remove image</button>
   </div> 
   <br>
     

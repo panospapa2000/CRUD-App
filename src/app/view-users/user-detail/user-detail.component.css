@@ -6,6 +6,7 @@ label {
   }
   h1{
     margin-left:10px;
+    margin-right:10px;
   }
   
   button.button2 {
@@ -33,7 +34,7 @@ label {
   margin-bottom: 10px;
   } 
   .example-card {
-    max-width: 400px;
+    max-width:min-content;
     align-items: center;
     margin:10px;
 
@@ -43,7 +44,11 @@ label {
  .matcard{
   align-items: center;
   margin-right: 10px;
-  
+  overflow: hidden;
+}
+
+.mat-card-title-group {
+  justify-content: flex-start;
 }
 
 a.example-card{
@@ -62,6 +67,3 @@ mat-icon {
   
 }
 
-.example-form-field {
-  padding: 20px;
-}

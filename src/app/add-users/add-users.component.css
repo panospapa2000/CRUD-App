@@ -6,7 +6,7 @@ h1{
 button.button2 {
     padding: 20px;
     width: 200px;
-
+    text-align: center;
     border-radius: 4px;
     font-size: 1rem;
     margin: 10px;

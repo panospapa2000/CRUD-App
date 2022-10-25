@@ -17,5 +17,7 @@ export class NotFoundComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-
+  goForward(): void {
+    this.location.forward();
+  }
 }

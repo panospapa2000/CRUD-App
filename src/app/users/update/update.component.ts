@@ -64,7 +64,7 @@ export class UpdateComponent implements OnInit {
   onFileSelected(event: any) {
     let file: File = event.target.files[0];
     if (!this.imageValidator(file.name)) {
-      this.snackBar.open("Selected file format is not supported. Please select a file with .png, .jpg or .jpeg extension.", "Retry", { duration: 5000 });
+      this.snackBar.open("Selected file format is not supported. Please select a file with .png, .jpg or .jpeg extension.", "Understood", { duration: 5000 });
     }
     else {
       let reader = new FileReader();

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UserModel } from '../../core/Model/userModel';
 import { UserService } from '../../core/services/user.service';
@@ -32,14 +32,14 @@ export class CreateComponent implements OnInit {
   createUserFunction() {
     this.userService.createUser(this.creationForm.getRawValue()).subscribe(item => {
       this.createData = item;
-      this.snackBar.open("This user has been successfully created!!!", "Okay", { verticalPosition: 'bottom' });
+      this.snackBar.open("This user has been successfully created!!!", "Okay");
     })
   }
 
   onFileSelected(event: any) {
     let file: File = event.target.files[0];
     if (!this.imageValidator(file.name)) {
-      this.snackBar.open("Selected file format is not supported. Please select a file with .png, .jpg or .jpeg extension.", "Retry", { duration: 5000 });
+      this.snackBar.open("Selected file format is not supported. Please select a file with .png, .jpg or .jpeg extension.", "Understood", { duration: 5000 });
     }
     else {
       let reader = new FileReader();

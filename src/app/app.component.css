@@ -3,8 +3,12 @@ a {
 }
 
 h1{
-    margin: 50px;
+    position:absolute;
+    left: 585px;
+    top: 10px;
     color: black;
+    border: solid 5px;
+    border-radius: 10em;
 }
 
 .content {

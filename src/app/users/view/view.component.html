@@ -1,7 +1,8 @@
 <!--Angular Material Table-->
 <div style="width:1500px" class="mat-elevation-z8">
+    <mat-icon class="searchIcon">search_icon</mat-icon>
     <mat-form-field style="color: black">
-        <mat-label style="color: black"><mat-icon>search</mat-icon>Click to search for a user</mat-label>
+        <mat-label style="color: black">Click to search for a user</mat-label>
         <input class="filterInput" matInput placeholder="" (keyup)="filterBar($event)">
     </mat-form-field>
     <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">

@@ -27,7 +27,7 @@
         </div>
 
         <mat-form-field appearance="fill">
-            <mat-label>Εmail</mat-label>
+            <mat-label><mat-icon>email</mat-icon>Εmail</mat-label>
             <input matInput formControlName="email">
         </mat-form-field>
         <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
@@ -36,7 +36,7 @@
         </div>
 
         <mat-form-field hintLabel="+CountryCode Number" appearance="fill">
-            <mat-label>Phone number</mat-label>
+            <mat-label><mat-icon>phone_android</mat-icon>Phone number</mat-label>
             <input matInput placeholder="e.g. +306991520547" formControlName="phone">
         </mat-form-field>
         <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
@@ -45,14 +45,14 @@
         </div>
 
         <mat-form-field hintLabel="Enter URL of image" appearance="fill">
-            <mat-label>Image URL</mat-label>
+            <mat-label><mat-icon>image</mat-icon>Image URL</mat-label>
             <input matInput formControlName="image">
             <mat-error>Insert image URL/Upload image</mat-error>
         </mat-form-field>
         <mat-card class="imageUpload">
             <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
             <div class="file-upload">
-                {{"click to upload an image"}}
+                {{"Upload file image"}}
                 <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
                     <mat-icon>attach_file</mat-icon>
                 </button>

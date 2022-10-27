@@ -32,7 +32,7 @@
                     </div>
                     <br>
                     <mat-form-field appearance="fill">
-                        <mat-label>Εmail</mat-label>
+                        <mat-label><mat-icon> email</mat-icon>Εmail</mat-label>
                         <input matInput formControlName="email" placeholder="someone@example.com">
                     </mat-form-field>
                     <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
@@ -40,7 +40,7 @@
                         <mat-error *ngIf="email?.errors?.['pattern']">Not a valid email</mat-error>
                     </div>
                     <mat-form-field hintLabel="+CountryCode Number" appearance="fill">
-                        <mat-label>Phone number</mat-label>
+                        <mat-label><mat-icon>phone_android</mat-icon>Phone number</mat-label>
                         <input matInput placeholder="e.g. +306991520547" formControlName="phone">
                     </mat-form-field>
                     <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
@@ -49,8 +49,8 @@
                     </div>
 
                     <mat-form-field hintLabel="Enter URL of image" appearance="fill">
-                        <mat-label>Image URL</mat-label>
-                        <input matInput formControlName="image">
+                        <mat-label><mat-icon>image</mat-icon>Image URL</mat-label>
+                        <input matInput formControlName="image"> 
                         <mat-error>Insert image URL or upload image file</mat-error>
                     </mat-form-field>
                     <br>
@@ -64,10 +64,9 @@
                         </div>
                     </mat-card>
                     <br>
-                    <button [disabled]="creationForm.invalid" (click)="createUserFunction()" class="createButton" mat-raised-button>Create
-                        user</button>
+                    <button [disabled]="creationForm.invalid" (click)="createUserFunction()" class="createButton" mat-raised-button><mat-icon>person_add</mat-icon>Create user</button>
                     <br>
-                    <button (click)="goBack()" mat-raised-button color="links">View list of users</button>
+                    <button (click)="goBack()" mat-raised-button color="basic"><mat-icon>person_outline</mat-icon>View list of users</button>
                 </form>
             </mat-card-content>
         </mat-card>

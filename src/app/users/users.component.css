@@ -1,5 +1,6 @@
  table {
     width: 100%;
+    margin-right: 8px ;
   }
   
   .mat-form-field {
@@ -18,4 +19,8 @@
     display: flex;
     justify-content: center;
     width: 120px;
+  }
+  #create-button{
+    margin-left: 600px;
+     margin-bottom: 50px;
   }

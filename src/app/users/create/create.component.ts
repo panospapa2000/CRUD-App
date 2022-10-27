@@ -63,7 +63,7 @@ export class CreateComponent implements OnInit {
           alert("User successfully created!");
           // this.addToTableService.addUserToTable(console.log(this.userForm.value));
           // this.subscription= this.addToTableService.currentSource.subscribe(userForm=>this.userForm.value=this.userForm.value)
-          this.dialogRef.close();
+          this.dialogRef.close(this.userForm.value);
         },
         error:()=>{
           alert("Error while creating user");

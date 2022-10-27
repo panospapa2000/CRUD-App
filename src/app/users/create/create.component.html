@@ -50,6 +50,7 @@
           <input matInput formControlName="image">
           <mat-hint>Hint</mat-hint>
         </mat-form-field>
+        <br>
         <mat-label>Or Upload Image</mat-label>
         <input type="file" class="file-input"
         (change)="onFileSelected($event)" #fileUpload requiredFileType="image/png" style="display:none;">

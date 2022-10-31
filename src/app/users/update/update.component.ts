@@ -5,7 +5,8 @@ import { User } from 'src/app/core/model/user';
 import { UserService } from 'src/app/core/services/user.service';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { createInjectableType } from '@angular/compiler';
-
+import { userFormGroup } from 'src/app/core/model/userFormGroup';
+import { userFormValues } from 'src/app/core/model/userFormValues';
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
@@ -13,19 +14,21 @@ import { createInjectableType } from '@angular/compiler';
 })
 export class UpdateComponent implements OnInit {
 
-  userForm!:any;
-  constructor(private userService:UserService, @Inject(MAT_DIALOG_DATA) public editData :any, private dialogRef: MatDialogRef<UpdateComponent>) { }
+  userForm:FormGroup<userFormGroup> = new FormGroup<userFormGroup>({
+    id:new FormControl<number>(0,{nonNullable:true}),
+    firstName:new FormControl<string>('',{nonNullable:true,validators:[Validators.required, Validators.pattern('[a-zA-Z]+$')]}),
+    lastName: new FormControl<string>('',{nonNullable:true,validators:[Validators.required, Validators.pattern('[a-zA-Z]+$')]}),
+    email: new FormControl<string>('',{nonNullable:true,validators:[Validators.required,Validators.email]}),
+    phone: new FormControl<string>('',{nonNullable:true,validators:[Validators.required,Validators.pattern('[+][0-9 ]+')]}),
+    image: new FormControl<string>('',{nonNullable:true,validators:Validators.required})
+  });
+
+  constructor(private userService:UserService, @Inject(MAT_DIALOG_DATA) public editData:User, private dialogRef: MatDialogRef<UpdateComponent>) { }
 
   ngOnInit(): void {
 
-    this.userForm = new FormGroup({
-      id: new FormControl(''),
-      firstName: new FormControl('',[Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-      lastName: new FormControl('',[Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-      email: new FormControl('',[Validators.required,Validators.email]),
-      phone: new FormControl('',[Validators.required,Validators.pattern('[+][0-9 ]+')]),
-      image: new FormControl('',Validators.required)
-    });
+
+
 
     this.userForm.setValue({
       id:this.editData.id,
@@ -37,7 +40,7 @@ export class UpdateComponent implements OnInit {
     })
   }
 
-  getId(){
+    get getId(){
     return this.userForm.get('id');
   }
 
@@ -61,7 +64,6 @@ export class UpdateComponent implements OnInit {
     this.userService.updateUser(this.userForm.value,this.editData.id).subscribe({
       next:(res)=>{
         alert("User updated successfully!");
-        // this.userForm.reset();
         this.dialogRef.close(this.userForm.value);
       },
       error:()=>{

@@ -4,6 +4,8 @@ import {Observable, of} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { User } from '../model/user';
+import { userFormGroup } from '../model/userFormGroup';
+import { userFormValues } from '../model/userFormValues';
 
 @Injectable({
   providedIn: 'root'
@@ -22,12 +24,12 @@ export class UserService {
     return this.http.get<User[]>(this.url);
   }
 
-  createUser(user:any){
-    return this.http.post<any>(this.url,user,this.httpOptions);
+  createUser(user:Partial<userFormValues>){
+    return this.http.post<User>(this.url,user,this.httpOptions);
   }
 
-  updateUser(user:any,id:number){
-    return this.http.put<any>(this.url+id,user)
+  updateUser(user:Partial<userFormValues>,id:number|undefined){
+    return this.http.put<User>(this.url+id,user)
   }
 
   deleteUser(id:number):Observable<User>{

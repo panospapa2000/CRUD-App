@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable, of} from 'rxjs';
 import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort,Sort} from '@angular/material/sort';
@@ -9,6 +10,8 @@ import { UserService } from '../core/services/user.service';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { UpdateComponent } from './update/update.component';
 import { CreateComponent } from './create/create.component';
+import { userFormGroup } from '../core/model/userFormGroup';
+import { userFormValues } from '../core/model/userFormValues';
 
 
 
@@ -71,7 +74,7 @@ export class UsersComponent implements OnInit {
 
 
 
-  openUpdateDialog(element :any) {
+  openUpdateDialog(element :User) {
     this.dialog.open(UpdateComponent, {
           width:'30%',
           data:element,

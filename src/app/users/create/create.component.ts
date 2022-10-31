@@ -5,11 +5,8 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/core/model/user';
 import { UsersComponent } from '../users.component';
 import { UserService } from 'src/app/core/services/user.service';
-import { AddToTableService} from 'src/app/core/services/add-to-table.service';
-import { Subscription } from 'rxjs';
-import { TitleStrategy } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
+import { userFormGroup } from 'src/app/core/model/userFormGroup';
 
 @Component({
   selector: 'app-create',
@@ -18,16 +15,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CreateComponent implements OnInit {
 
-  // userForm:User[]=[];
-  userForm:FormGroup= new FormGroup({
-    id: new FormControl(''),
-    firstName: new FormControl('',[Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-    lastName: new FormControl('',[Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-    email: new FormControl('',[Validators.required,Validators.email]),
-    phone: new FormControl('',[Validators.required,Validators.pattern('[+][0-9 ]+')]),
-    image: new FormControl('',Validators.required)
+  
+
+   userForm:FormGroup<userFormGroup> = new FormGroup<userFormGroup>({
+    firstName:new FormControl<string>('',{nonNullable:true,validators:[Validators.required, Validators.pattern('[a-zA-Z]+$')]}),
+    lastName: new FormControl<string>('',{nonNullable:true,validators:[Validators.required, Validators.pattern('[a-zA-Z]+$')]}),
+    email: new FormControl<string>('',{nonNullable:true,validators:[Validators.required,Validators.email]}),
+    phone: new FormControl<string>('',{nonNullable:true,validators:[Validators.required,Validators.pattern('[+][0-9 ]+')]}),
+    image: new FormControl<string>('',{nonNullable:true,validators:Validators.required})
   });
-  subscription!:Subscription;
+
   fileName = '';
 
   constructor(private userService:UserService,private dialogRef:MatDialogRef<CreateComponent>, private http: HttpClient) { }
@@ -61,8 +58,6 @@ export class CreateComponent implements OnInit {
       this.userService.createUser(this.userForm.value).subscribe({
         next:(res)=>{
           alert("User successfully created!");
-          // this.addToTableService.addUserToTable(console.log(this.userForm.value));
-          // this.subscription= this.addToTableService.currentSource.subscribe(userForm=>this.userForm.value=this.userForm.value)
           this.dialogRef.close(this.userForm.value);
         },
         error:()=>{
@@ -79,7 +74,7 @@ export class CreateComponent implements OnInit {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
-          this.userForm.patchValue({image:reader.result});
+          this.userForm.patchValue({image:reader.result?.toString()});
       };
     }
     else{

@@ -79,8 +79,7 @@ export class UsersComponent implements OnInit {
           width:'30%',
           data:element,
     }).afterClosed().subscribe(item=>{
-      // console.log(item);
-     const foundIndex=this.dataSource.data.findIndex(x=>item.id===element.id);
+     const foundIndex=this.dataSource.data.indexOf(element);
       this.dataSource.data[foundIndex]=item;
       this.dataSource.data = [...this.dataSource.data];
 

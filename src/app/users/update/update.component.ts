@@ -29,8 +29,9 @@ export class UpdateComponent implements OnInit {
 
 
 
-
+    console.log(this.editData.id)
     this.userForm.setValue({
+
       id:this.editData.id,
       firstName:this.editData.firstName,
       lastName:this.editData.lastName,

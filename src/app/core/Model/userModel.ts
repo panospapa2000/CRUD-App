@@ -1,3 +1,5 @@
+import { ProductModel } from "./productModel";
+
 export interface UserModel {
     id: number;
     firstName: string;
@@ -5,4 +7,5 @@ export interface UserModel {
     email: string;
     phone: string;
     image: string;
+    products?: ProductModel;
 }

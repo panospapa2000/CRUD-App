@@ -37,12 +37,21 @@
                 <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
               </ng-container>
 
+              
+              <!-- Number of Products Column -->
+              <ng-container matColumnDef="numProds">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Number of Products</th>
+                <td mat-cell *matCellDef="let element">{{element.numProds}} </td>
+              </ng-container>              
+              
+              
+
               <!-- Image Column -->
               <ng-container matColumnDef="image">
                 <th mat-header-cell *matHeaderCellDef> Image </th>
                 <td mat-cell *matCellDef="let element"> <img src="{{element.image}}"> </td>
               </ng-container>
-
+              <!-- Update User Details Column-->
               <ng-container matColumnDef="update">
                 <th mat-header-cell *matHeaderCellDef> Update User Details </th>
                 <td mat-cell *matCellDef="let element">
@@ -50,6 +59,8 @@
                   <mat-icon>edit</mat-icon>
                 </button> </td>
               </ng-container>
+
+              <!-- Delete User Column-->
               <ng-container matColumnDef="delete">
                 <th mat-header-cell *matHeaderCellDef> Delete User </th>
                 <td mat-cell *matCellDef="let element">

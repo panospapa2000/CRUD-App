@@ -12,7 +12,9 @@ import { UpdateComponent } from './update/update.component';
 import { CreateComponent } from './create/create.component';
 import { userFormGroup } from '../core/model/userFormGroup';
 import { userFormValues } from '../core/model/userFormValues';
-
+import { UserProductService } from '../core/services/user-product.service';
+import {forkJoin,map} from 'rxjs'
+import { UserProduct } from '../core/model/userProduct';
 
 
 @Component({
@@ -24,11 +26,10 @@ export class UsersComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'phone', 'image','update','delete'];
-  userData: User[]=[];
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'phone','numProds', 'image','update','delete'];
   dataSource: MatTableDataSource<User>= new MatTableDataSource();
 
-  constructor(private userService: UserService,public dialog:MatDialog,) { 
+  constructor(private userService: UserService,public dialog:MatDialog,private userProductService:UserProductService) { 
   }
 
   ngOnInit(): void {
@@ -36,13 +37,45 @@ export class UsersComponent implements OnInit {
   }
 
   getUsers() {
-    this.userService.getUsers().subscribe(element=>{
-      this.userData = element;
-      this.dataSource = new MatTableDataSource<User>(this.userData);
-      this.dataSource.paginator = this.paginator;
+    forkJoin({
+      users:this.userService.getUsers(),
+      userProducts:this.userProductService.getUserProducts(),
+    }).pipe(map((response)=>{
+      const users:User[]=response.users;
+      const userProducts:UserProduct[] = response.userProducts;
+      for (let i =0 ;i<users.length; i++){
+
+        let numOfProducts=0;
+
+        for (let j=0 ; j<userProducts.length;j++ ){
+
+          if(users[i].id===userProducts[j].user_id){
+            numOfProducts++;
+          }
+
+          users[i].numProds=numOfProducts;
+        }
+        
+      }
+      console.log('Users t',users)
+      return users;
+    })).subscribe(element=>{
+      console.log(element);
+      this.dataSource = new MatTableDataSource<User>(element);
+      this.dataSource.paginator=this.paginator;
       this.dataSource.sort = this.sort;
-    });
+   })
+
   }
+   
+    // this.userService.getUsers().subscribe(element=>{
+    //   this.userData = element;
+    //   this.dataSource = new MatTableDataSource<User>(this.userData);
+    //   this.dataSource.paginator = this.paginator;
+    //   this.dataSource.sort = this.sort;
+    // });
+  
+
 
   applyFilter(event:Event){
     const filterValue= (event.target as HTMLInputElement).value;

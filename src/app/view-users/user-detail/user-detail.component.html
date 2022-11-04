@@ -22,12 +22,12 @@
 
 
  
-    <p>Number of products: {{productsfinal.length}}</p>
+    <h1>Number of products: {{productsfinal.length}}</h1>
     <button class="button2" mat-flat-button color="primary" (click)="click2()">{{ReadMore?"View Products":"Hide Products"}}</button>
 
     <ng-container *ngIf="visible">
       <li *ngFor="let product of productsfinal; let i=index">
-        Product {{i+1}}:
+        <b>Product {{i+1}}:</b>
           <br>
    
           <mat-card class="example-card">
@@ -37,8 +37,8 @@
              <a href="{{product.thumbnail}}" target="_blank" rel="noopener noreferrer"><img mat-card-md-image src={{product.thumbnail}} > </a>
            </mat-card-title-group>
            <mat-card-content class="maticon">
-             Category: {{product.category}} <br> Brand: {{product.brand}} <br>
-             Description: {{product.description}}
+            <p><b>Category:</b></p> <p>{{product.category}}</p>  <p><b>Brand:</b></p> <p>{{product.brand}}</p>
+             <p><b>Description:</b></p> <p>{{product.description}}</p>
            </mat-card-content>
          </mat-card>
           <br>
@@ -107,5 +107,8 @@
 
     </div> 
     <br>     
+    <button mat-flat-button class="button2" color="primary" (click)="getUser()">Undo Temp Changes</button>
     <button mat-flat-button color="primary" class="button2" [disabled]="firstname1.invalid || lastname1.invalid || email1.invalid || tel1.invalid || url1.invalid" (click)="save()">Update User</button>
+
+
   </div>

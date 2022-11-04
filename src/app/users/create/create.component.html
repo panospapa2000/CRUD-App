@@ -40,14 +40,13 @@
             <mat-error *ngIf="phone?.errors?.['required']">Please enter a phone number</mat-error>
             <mat-error *ngIf="phone?.errors?.['pattern']">Is not a valid phone </mat-error>
             </div>
-          <mat-hint></mat-hint>
+          <mat-hint>ex +123456789</mat-hint>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="fill">
           <mat-label>Image</mat-label>
           <input matInput formControlName="image">
-          <mat-hint>Hint</mat-hint>
         </mat-form-field>
         <br>
         <mat-label>Or Upload Image</mat-label>

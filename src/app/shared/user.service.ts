@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { User } from '../core/models/user';
+import { Product } from '../core/models/products';
+import { User_Product } from '../core/models/user_products';
 import { MessageService } from './message.service';
 
 
@@ -10,6 +12,8 @@ import { MessageService } from './message.service';
 export class UserService {
 
   private usersUrl = 'http://onelity.azurewebsites.net/users';  // URL to web api
+  private productsUrl = 'https://onelity.azurewebsites.net/products'
+  private userproductsUrl = 'https://onelity.azurewebsites.net/user_products'
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -20,6 +24,43 @@ export class UserService {
     private messageService: MessageService)
      { }
 
+/** GET user-products from the server */
+getalluserproducts(): Observable<User_Product[]> {
+  return this.http.get<User_Product[]>(this.userproductsUrl)
+    .pipe(
+      tap(_ => this.log('fetched user-products')),
+      catchError(this.handleError<User_Product[]>('getuserproducts', []))
+    );
+}
+
+/** GET products from the server */
+getallproducts(): Observable<Product[]> {
+  return this.http.get<Product[]>(this.productsUrl)
+    .pipe(
+      tap(_ => this.log('fetched products')),
+      catchError(this.handleError<Product[]>('getproducts', []))
+    );
+}
+
+    /** GET specific user products from the server */
+    getuserproduct(id: number): Observable<User_Product[]> {
+      const url = `${this.userproductsUrl}/?user_id=${id}`;
+      return this.http.get<User_Product[]>(url)
+        .pipe(
+          tap(_ => this.log('fetched user products')),
+          catchError(this.handleError<User_Product[]>('getuserproducts'))
+        );
+    }
+
+      /** GET specific user products from the server */
+      getproduct(id: number): Observable<Product> {
+        const url = `${this.productsUrl}/${id}`;
+        return this.http.get<Product>(url)
+          .pipe(
+            tap(_ => this.log('fetched user products')),
+            catchError(this.handleError<Product>('getproducts'))
+          );
+      }
   /** GET original users from the server */
   getorgusers(): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrl)
@@ -34,7 +75,7 @@ export class UserService {
       return this.http.get<User[]>(url)
         .pipe(
           tap(_ => this.log('fetched users')),
-          catchError(this.handleError<User[]>('getorgusers', []))
+          catchError(this.handleError<User[]>('getusers', []))
         );
     }
 

@@ -19,11 +19,41 @@
       <mat-icon>email</mat-icon>  <a mat-stroked-button class="matcard" href="mailto:{{user.email}}" target="_blank">{{user.email}}</a>
     </mat-card-content>
   </mat-card><br>
+
+
+ 
+    <p>Number of products: {{productsfinal.length}}</p>
+    <button class="button2" mat-flat-button color="primary" (click)="click2()">{{ReadMore?"View Products":"Hide Products"}}</button>
+
+    <ng-container *ngIf="visible">
+      <li *ngFor="let product of productsfinal; let i=index">
+        Product {{i+1}}:
+          <br>
+   
+          <mat-card class="example-card">
+           <mat-card-title-group>
+             <mat-card-title>{{product.title}} </mat-card-title>
+             <mat-card-subtitle style="margin-top: 10px" class="maticon"><mat-icon>perm_contact_calendar</mat-icon> ID: {{product.id}}</mat-card-subtitle>
+             <a href="{{product.thumbnail}}" target="_blank" rel="noopener noreferrer"><img mat-card-md-image src={{product.thumbnail}} > </a>
+           </mat-card-title-group>
+           <mat-card-content class="maticon">
+             Category: {{product.category}} <br> Brand: {{product.brand}} <br>
+             Description: {{product.description}}
+           </mat-card-content>
+         </mat-card>
+          <br>
+       </li>
+
+
+    </ng-container>
+    
+  <br>
   
     <h1>{{user.firstName | uppercase}} Details</h1>
 
     
     <div>
+      
 
       <mat-icon>perm_contact_calendar</mat-icon> <mat-form-field class="example-form-field" appearance="outline">
         <mat-label>ID</mat-label>
